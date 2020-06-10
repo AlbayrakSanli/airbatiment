@@ -4,5 +4,7 @@ class Owner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :house
+  has_many :houses
+  has_many :appointments
+  has_many :users, through: :appointments
 end
