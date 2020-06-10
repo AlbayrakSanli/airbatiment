@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  after_create :meeting_confirmation
+
   belongs_to :user
   belongs_to :owner
 
@@ -16,6 +18,11 @@ class Appointment < ApplicationRecord
     errors.add(:start_date, "Entrez une date valide postérieure à la date d'aujourd'hui")
     if date_start <= DateTime.now()
     end
+  end
+
+
+  def meeting_confirmation
+    UserMailer.meeting_confirmation(self).deliver_now
   end
 
 end
