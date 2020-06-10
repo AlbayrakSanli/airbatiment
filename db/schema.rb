@@ -10,11 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_06_10_081320) do
+=======
+ActiveRecord::Schema.define(version: 2020_06_10_091701) do
+>>>>>>> furkan
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
+=======
+  create_table "houses", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "price_house"
+    t.integer "price_visit"
+    t.integer "area"
+    t.integer "room"
+    t.bigint "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_houses_on_owner_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_owners_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
+  end
+
+>>>>>>> furkan
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
