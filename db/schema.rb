@@ -10,17 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_06_10_081320) do
-=======
 ActiveRecord::Schema.define(version: 2020_06_10_091701) do
->>>>>>> furkan
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
   create_table "houses", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -46,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_091701) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
->>>>>>> furkan
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
