@@ -41,10 +41,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_163704) do
     t.integer "area"
     t.integer "room"
     t.bigint "owner_id"
-    t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_houses_on_city_id"
     t.index ["owner_id"], name: "index_houses_on_owner_id"
   end
 

@@ -1,16 +1,16 @@
 class Appointment < ApplicationRecord
-  after_create :meeting_confirmation
+  after_create :meeting_notification_owner, :meeting_notification_user
 
   belongs_to :user
   belongs_to :owner
 
-  validates :duration,
-            presence: true,
-            numericality: { only_integer: true, greater_than: 1, less_than: 1 }
+  # validates :duration,
+  #           presence: true,
+  #           numericality: { only_integer: true, greater_than: 1, less_than: 1 }
 
-  validates :date_start,
-            presence: true
-  validate :date_start_future?
+  # validates :date_start,
+  #           presence: true
+  # validate :date_start_future?
 
   private
 
@@ -20,9 +20,12 @@ class Appointment < ApplicationRecord
     end
   end
 
+  def meeting_notification_owner
+    OwnerMailer.meeting_notification_owner(self).deliver_now
+  end
 
-  def meeting_confirmation
-    UserMailer.meeting_confirmation(self).deliver_now
+  def meeting_notification_user
+    UserMailer.meeting_notification_user(self).deliver_now
   end
 
 end

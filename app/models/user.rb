@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :owners, through: :appointments
 
-  validates :first_name, :last_name, :description,
-            presence: true
+  # validates :first_name, :last_name, :description,
+  #           presence: true
 
 end

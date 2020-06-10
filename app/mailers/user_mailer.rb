@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
-    default from: 'airbatiment@yopmail.fr'
+  default from: 'airbatiment@yopmail.fr'
 
-  def meeting_confirmation(appointment)
+  def meeting_notification_user(appointment)
     @appointment = appointment
     @user = appointment.user
     @url  = 'http://monsite.fr/login'

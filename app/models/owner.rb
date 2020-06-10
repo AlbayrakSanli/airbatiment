@@ -8,7 +8,7 @@ class Owner < ApplicationRecord
   has_many :appointments
   has_many :users, through: :appointments
 
-  validates :first_name, :last_name, :description,
-            presence: true
+  # validates :first_name, :last_name, :description,
+  #           presence: true
 
 end
