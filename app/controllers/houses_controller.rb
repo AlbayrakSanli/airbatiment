@@ -37,6 +37,7 @@ class HousesController < ApplicationController
     else
       flash[:danger] = "La saisie n'a pas un format valide, merci de saisir à nouveau"
       redirect_to new_house_path
+
     end
   end
 
@@ -57,6 +58,7 @@ class HousesController < ApplicationController
     else
       flash[:danger] = "La saisie n'a pas un format valide, merci de saisir à nouveau"
       redirect_to house_path
+
     end
   end
 
@@ -73,4 +75,5 @@ class HousesController < ApplicationController
 			redirect_to new_owner_session_path
 		end
 	end
+
 end
