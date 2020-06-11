@@ -15,7 +15,6 @@
  */
 
  html, body {
-   height: 100%;
    padding: 0;
    margin: 0;
  }
@@ -27,9 +26,9 @@
  }
 
  footer {
-     margin-top: auto;
-     bottom: 0;
-     width: 100%;
-     background: #000000;
-     color: #FFFFFF;
+   margin-top: auto;
+   bottom: 0;
+   width: 100%;
+   background: #000000;
+   color: #FFFFFF;
  }
