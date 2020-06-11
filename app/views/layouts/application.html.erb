@@ -8,10 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
     <!-- CSS only -->
     <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -28,10 +24,13 @@
     <%= render "layouts/navbar"%>
 
     <!--    Page content-->
+    <% if current_page?(root_path) || current_page?(new_house_path)%>
     <%= render "layouts/jumbotron" %>
+    <% end %>
 
     <div class="container">
       <% if current_page?(root_path) || current_page?(new_house_path)%>
+
       <div class="row mt-5 mb-5">
         <div class="col-md-8">
           <h1 class="display-5 text-black-50 text-center">AirBatiment, venez proposer vos maisons</h1>
@@ -46,6 +45,8 @@
 
     <!-- Footer-->
     <%= render "layouts/footer" %>
+
+
 
   </body>
 </html>
