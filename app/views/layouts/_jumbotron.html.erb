@@ -1,11 +1,16 @@
 <% if current_page?(root_path) || current_page?(new_house_path)%>
-  <div class="jumbotron my-4" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.pexels.com/photos/45170/kittens-cat-cat-puppy-rush-45170.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
-      background-size: cover;
-      background-position: center;
+  <div class="jumbotron mb-4" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+      width: 100vw;
+      height: 50vh;
+      background-position: bottom 80px;
       background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 0 !important;
   ">
-    <h1 class="display-4 text-white">Airbatiment</h1>
-    <p class="lead text-warning"><strong>Venez proposer vos maisons</strong></p>
-    <%= link_to "Nouveau chat à vendre", new_house_path, class:"btn btn-outline-warning btn-lg mx-1 my-1" %>
+      <div class="container">
+        <h1 class="display-4 text-white">AirBatiment</h1>
+        <p class="lead text-warning"><strong>Venez proposer vos maisons</strong></p>
+        <%= link_to "Mettre une maison en exposition", new_house_path, class:"btn btn-outline-warning btn-lg mx-1 my-1" %>
+      </div>
   </div>
 <% end %>
