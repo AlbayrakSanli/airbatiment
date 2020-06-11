@@ -8,6 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
     <!-- CSS only -->
     <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,7 +30,9 @@
 
     <!--    Page content-->
     <%= render "layouts/jumbotron" %>
+
     <div class="container">
+      <h1 class="my-4">Voici la liste des maisons</h1>
       <%= yield %>
     </div>
 

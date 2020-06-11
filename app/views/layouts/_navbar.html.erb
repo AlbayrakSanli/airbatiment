@@ -1,43 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-custom fixed-top">
   <div class="container">
     <%= link_to 'AirBatiment', root_path , class: 'navbar-brand'%>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to 'Accueil', root_path , class: 'nav-link'%>
         </li>
         <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mon profil/Se déconnecter
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", user_path(current_user), class: 'dropdown-item'%>
-            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {confirm: "Es tu sûr de te déconnecter ?"} , class: 'dropdown-item'%>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mon profil/Se déconnecter
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Mon profil", user_path(current_user), class: 'dropdown-item'%>
+              <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, data: {confirm: "Es tu sûr de te déconnecter ?"} , class: 'dropdown-item'%>
+            </div>
+          </li>
         <% elsif owner_signed_in? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Mon profil/Se déconnecter
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Mon profil", owner_path(current_owner), class: 'dropdown-item'%>
-            <%= link_to "Se déconnecter", destroy_owner_session_path, method: :delete, data: {confirm: "Es tu sûr de te déconnecter ?"} , class: 'dropdown-item'%>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mon profil/Se déconnecter
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Mon profil", owner_path(current_owner), class: 'dropdown-item'%>
+              <%= link_to "Se déconnecter", destroy_owner_session_path, method: :delete, data: {confirm: "Es tu sûr de te déconnecter ?"} , class: 'dropdown-item'%>
+            </div>
+          </li>
         <% else %>
-        <li class="nav-item">
-          <%= link_to "Connexion particulier", new_user_session_path, class: 'nav-link'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Connexion en tant que conseiller", new_owner_session_path, class: 'nav-link border rounded'%>
-        </li>
+          <li class="nav-item">
+            <%= link_to "Connexion particulier", new_user_session_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Connexion en tant que conseiller", new_owner_session_path, class: 'nav-link border rounded'%>
+          </li>
         <% end %>
+
       </ul>
     </div>
   </div>

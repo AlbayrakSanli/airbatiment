@@ -1,16 +1,40 @@
-<% if current_page?(root_path) || current_page?(new_house_path)%>
-  <div class="jumbotron mb-4" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
-      width: 100vw;
-      height: 50vh;
-      background-position: bottom 80px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-radius: 0 !important;
-  ">
-      <div class="container">
-        <h1 class="display-4 text-white">AirBatiment</h1>
-        <p class="lead text-warning"><strong>Venez proposer vos maisons</strong></p>
-        <%= link_to "Mettre une maison en exposition", new_house_path, class:"btn btn-outline-warning btn-lg mx-1 my-1" %>
+<header>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!-- Slide One - Set the background image for this slide in the line below -->
+      <div class="carousel-item active" style="background-image: url('https://www.ion-architecture.com/images/constructeur-maison-individuelle_1.jpg')">
+        <div class="carousel-caption d-none d-md-block bg-slide">
+          <h3>First Slide</h3>
+          <p>This is a description for the first slide.</p>
+        </div>
       </div>
+      <!-- Slide Two - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://www.ion-architecture.com/images/constructeur-maison-individuelle_5.jpg')">
+        <div class="carousel-caption d-none d-md-block bg-slide">
+          <h3>Second Slide</h3>
+          <p>This is a description for the second slide.</p>
+        </div>
+      </div>
+      <!-- Slide Three - Set the background image for this slide in the line below -->
+      <div class="carousel-item" style="background-image: url('https://www.ion-architecture.com/images/constructeur-maison-individuelle_3.jpg')">
+        <div class="carousel-caption d-none d-md-block bg-slide">
+          <h3>Third Slide</h3>
+          <p>This is a description for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-<% end %>
+</header>
