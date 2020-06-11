@@ -5,6 +5,7 @@ class HousesController < ApplicationController
 
   def show
     @house = House.find(params[:id])
+    @owner = @house.owner
   end
 
   def edit
