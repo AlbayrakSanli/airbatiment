@@ -13,6 +13,11 @@
       </div>
     </div>
 
+    <% if @house.owner.id == current_owner.id %>
+      <%= link_to 'Edit', edit_house_path(@house), class:"btn btn-success" %>
+      <%= link_to 'Destroy', @house, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
+    <% end %>
+
 
     <div class="col-md-4">
       <h3><b>Informations</b></h3>
