@@ -1,0 +1,39 @@
+<div class="container">
+  <%= @house.title %>
+</div>
+
+<div class="container">
+  <%= form_tag appointments_path, method: "post" do %>
+
+    <div class="form-row">
+       <div class="form-group col-md-6">
+        <%= label_tag 'Conseiller' %>
+        <%= text_field_tag 'owner', @owner.id, class: 'form-control', :readonly => true %>
+        <br/><br/>
+      </div>
+
+       <div class="form-group col-md-6">
+        <%= label_tag 'Visiteur' %>
+        <%= text_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
+        <br/><br/>
+      </div>
+    </div>
+
+    <div class="form-row">
+       <div class="form-group col-md-6">
+        <%= label_tag 'Date du rendez-vous' %>
+        <%= date_field_tag 'date_start', nil, class: 'form-control' %>
+        <br/><br/>
+      </div>
+
+       <div class="form-group col-md-6">
+        <%= label_tag 'Durée (entre 60 et 120 minutes)' %>
+        <%= text_field_tag 'duration', "60", class: 'form-control' %>
+        <br/><br/>
+      </div>
+    </div>
+
+  <%= submit_tag "Soumettre le rdv", class: "btn btn-outline-primary" %>
+
+  <% end %>
+</div>

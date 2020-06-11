@@ -2,11 +2,12 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user, only: [:index]
 
   def new
-    @owner = Owner.find(params[:id])
+    @house = House.find(params[:id])
+    @owner = @house.owner
   end
 
   def create
-    @appointment = Appointment.new(user_id: params[:user_id], owner_id: params[:owner_id], duration: params[:duration], start_date: params[:start_date], stripe_customer_id: params[:customer_id])
+    @appointment = Appointment.new(user_id: params[:user], owner_id: params[:owner], duration: params[:duration], date_start: params[:date_start])
 
     if @appointment.save
       flash[:success] = "Appointment registration successfully saved"
