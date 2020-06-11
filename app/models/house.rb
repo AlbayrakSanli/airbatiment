@@ -8,7 +8,7 @@ class House < ApplicationRecord
 
   validates :description,
             presence: true,
-            length: { in: 100..500 }
+            length: { in: 10..500 }
 
   validates :price_house,
             presence: true,
