@@ -1,4 +1,6 @@
 class HousesController < ApplicationController
+  before_action :authenticate_owner, only: [:new, :edit]
+
   def index
     @houses = House.all
   end
@@ -23,5 +25,12 @@ class HousesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def authenticate_owner
+    unless current_owner
+      flash[:danger] = "Not logged in."
+      redirect_to new_owner_session_path
+    end
   end
 end
