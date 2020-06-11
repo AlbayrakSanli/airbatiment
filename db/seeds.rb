@@ -8,12 +8,18 @@ City.destroy_all
 10.times do
   User.create(
     email: Faker::Internet.email,
-    password: "airbatiment"
+    password: "airbatiment",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false)
   )
 
   Owner.create(
     email: Faker::Internet.email,
-    password: "airbatiment"
+    password: "airbatiment",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false)
   )
 
   City.create(
