@@ -17,6 +17,7 @@
  */
 
 
+
  html, body {
    height: 100%;
    padding: 0;
@@ -37,12 +38,13 @@
 
 
  footer {
-     margin-top: auto;
-     bottom: 0;
-     width: 100%;
-     background: #000000;
-     color: #FFFFFF;
+    margin-top: auto;
+    bottom: 0;
+    width: 100%;
+    background: #000000;
+    color: #FFFFFF;
  }
+
 
 .bg-custom{
     background-color: #117a8b;
@@ -52,11 +54,5 @@
     background-color: rgba(0, 0, 0, 0.5)
 }
 
- footer {
-   margin-top: auto;
-   bottom: 0;
-   width: 100%;
-   background: #000000;
-   color: #FFFFFF;
- }
+
 

@@ -28,4 +28,3 @@ class AppointmentsController < ApplicationController
     end
   end
 end
-
