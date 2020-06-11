@@ -32,7 +32,16 @@
     <%= render "layouts/jumbotron" %>
 
     <div class="container">
-      <h1 class="my-4">Voici la liste des maisons</h1>
+      <% if current_page?(root_path) || current_page?(new_house_path)%>
+      <div class="row mt-5 mb-5">
+        <div class="col-md-8">
+          <h1 class="display-5 text-black-50 text-center">AirBatiment, venez proposer vos maisons</h1>
+        </div>
+        <div class="col-md-4">
+          <%= link_to "Mettre une maison en exposition", new_house_path, class:"btn btn-warning btn-lg text-white" %>
+        </div>
+      </div>
+      <% end %>
       <%= yield %>
     </div>
 
