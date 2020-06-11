@@ -4,12 +4,12 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :owner
 
-  # validates :duration,
-  #           presence: true,
-  #           numericality: { only_integer: true, greater_than: 1, less_than: 1 }
+  validates :duration,
+            presence: true,
+            numericality: { only_integer: true, greater_than: 59, less_than: 120 }
 
-  # validates :date_start,
-  #           presence: true
+  validates :date_start,
+            presence: true
   # validate :date_start_future?
 
   private
