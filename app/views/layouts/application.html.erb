@@ -29,10 +29,13 @@
     <%= render "layouts/navbar"%>
 
     <!--    Page content-->
+    <% if current_page?(root_path) || current_page?(new_house_path)%>
     <%= render "layouts/jumbotron" %>
+    <% end %>
 
     <div class="container">
       <% if current_page?(root_path) || current_page?(new_house_path)%>
+
       <div class="row mt-5 mb-5">
         <div class="col-md-8">
           <h1 class="display-5 text-black-50 text-center">AirBatiment, venez proposer vos maisons</h1>
