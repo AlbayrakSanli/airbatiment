@@ -7,14 +7,14 @@
     <h1>Bonjour <%= @owner.first_name %>!</h1>
     <p>
        Un utilisateur souhaite prendre rdv avec vous.</br>
-       Nous vous invitons à vous rapprocher par email de votre interlocuteur pour convenir des détails du rdv : <%= @user.email %>.
+       Nous vous invitons à vous rapprocher de votre interlocuteur par email pour convenir des détails du rdv : <%= @user.email %>.
     </p>
     <p>Récapitulatif du rdv :</p>
     <ul>
-      <li>Date : <%= @appointment.date_start.strftime("%m/%d/%Y") %></li>
+      <li>Date : <%= @appointment.date_start.strftime("%d/%m/%Y") %></li>
       <li>Durée souhaitée : <%= @appointment.duration %> minutes</li>
       <li>Prix de la visite : <%= @appointment.house.price_visit %>€</li>
     </ul>
-    <p> À très vite sur AirBatiment !
+    <p> À très vite sur AirBatiment !</p>
   </body>
 </html>

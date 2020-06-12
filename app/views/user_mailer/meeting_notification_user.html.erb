@@ -11,7 +11,7 @@
     </p>
     <p>Récapitulatif du rdv :</p>
     <ul>
-      <li>Date : <%= @appointment.date_start.strftime("%m/%d/%Y") %></li>
+      <li>Date : <%= @appointment.date_start.strftime("%d/%m/%Y") %></li>
       <li>Durée souhaitée : <%= @appointment.duration %> minutes</li>
       <li>Prix de la visite : <%= @appointment.house.price_visit %>€</li>
     </ul>
