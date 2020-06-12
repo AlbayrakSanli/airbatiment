@@ -1,52 +1,72 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-6 offset-md-3 vh-100">
+<div class="row">
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item">
+        <%= link_to 'Modifier mon profil', edit_user_registration_path, class: 'sidebar-link active' %>
+      </li>
+    </ul>
+    <br>
+    <%= link_to 'Voir mon profil', user_path(current_user.id), class: 'btn btn-default wide1' %>
+  </div>
+  <div class="col-md-7 text-center">
+    <div class="panel panel-default">
+      <div class="panel-heading">Mon profil</div>
+      <div class="panel-body">
+        <div class="container">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-      <h2 class="h2 mb-3 font-weight-normal text-center">Edit <%= resource_name.to_s.humanize %></h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "Prénom" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Nom" %>
+            </div>
 
-        <div class="form-group">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-        </div>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Adresse e-mail" %>
+            </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <span class="btn btn-default btn-file">
+                    Upload ma photo
+                  <%= f.file_field :avatar %>
+                  </span>
+                </div>
+              </div>
+            </div>
 
-        <div class="form-group">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-          <% if @minimum_password_length %>
-          <div class="mt-2">
-            <em><%= @minimum_password_length %> characters minimum</em>
-          </div>
+
+            <div class="form-group">
+              <%= f.text_area :description, rows:5, col:25, class: "form-control", placeholder: "Ma description" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Nouveau mot de passe (si vous souhaitez changer de mot de passe)" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirmation du mot de passe" %>
+            </div>
+
+
+            <div class="form-group">
+              <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Pour confirmer votre changement de mot de passe ou d'email" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+
+            </div>
           <% end %>
+
+
+
         </div>
-
-        <div class="form-group">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-        </div>
-
-        <div class="actions mt-2">
-          <%= f.submit "Update", class: "btn btn-outline-primary" %>
-        </div>
-      <% end %>
-
-      <h3 class="mt-4">Cancel my account</h3>
-
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary" %></p>
-
-      <%= link_to "Back", :back %>
-
+      </div>
     </div>
+
   </div>
 </div>

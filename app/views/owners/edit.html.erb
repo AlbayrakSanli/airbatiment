@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="mb-1 mt-4 text-primary">Editer mon profil</h1>
+</div>
+
+<div class="card-body">
+  <%= form_tag url_for(action: 'update'), method: "patch" do %>
+    <form method="PATCH">
+      <br>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Prénom</label>
+          <input class="form-control rounded-0" type="text" name="first_name" minlength="5" maxlength="20" placeholder="Quel est votre prénom ?" value="<%= @owner.first_name %>">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Nom de famille</label>
+          <input class="form-control rounded-0" type="text" name="last_name" minlength="5" maxlength="20" placeholder="Quel est votre nom ?" value="<%= @owner.last_name %>">
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="description" minlength="5" maxlength="140" placeholder="Décrivez-vous !"><%= @owner.description %></textarea>
+      </div>
+      <br>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Adresse mail</label>
+          <input class="form-control rounded-0" type="text" name="email"  placeholder="Votre nouvelle adresse mail" minlength="5" maxlength="40" value="<%= @owner.email %>">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Mot de passe</label>
+          <input class="form-control rounded-0" type="password" name="password"  placeholder="Votre nouveau mot de passe" minlength="5" maxlength="20">
+        </div>
+      </div>
+      <br>
+      <div class="container text-center">
+        <input type="submit" value="Editer mon profil" class="btn btn-lg btn-primary rounded-2">
+      </div>
+    </form>
+  <% end %>
+</div>
