@@ -8,8 +8,8 @@
           <h4 class="card-header"><%= house.title %></h4>
           <a href="#"><img class="card-img-top" src="https://www.ion-architecture.com/images/constructeur-maison-loir-et-cher_1.jpg" alt=""></a>
           <div class="card-body">
-            <p class="card-text"><%= house.description %></p>
-            <p class="card-text"><%= house.price_house %>€</p>
+            <p class="card-text text-justify"><%= house.description %></p>
+            <p class="card-text"><%= house.price_visit %>€/visite</p>
           </div>
           <div class="card-footer">
             <%= link_to "Plus d'informations ?", house_path(house.id), class:"btn btn-info" %>
