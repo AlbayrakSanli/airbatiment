@@ -1,7 +1,13 @@
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <%= link_to 'Teams', teams_path, class:"btn btn-info"%>
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+<footer class="page-footer bg-dark">
+  <div class="mt-3 container">
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= link_to 'Teams', teams_path, class:"text-light"%> -
+        <%= link_to 'Mentions légales', root_path, class:"text-light" %>
+      </div>
+      <div>
+        <p class="text-right text-white">Copyright &copy; AirBatiment - 2020</p>
+      </div>
+    </div>
   </div>
-  <!-- /.container -->
 </footer>
