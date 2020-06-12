@@ -11,8 +11,9 @@
     </p>
     <p>Récapitulatif du rdv :</p>
     <ul>
-      <li>Date : <%= @appointment.date_start %></li>
-      <li>Durée souhaitée : <%= @appointment.duration %></li>
+      <li>Date : <%= @appointment.date_start.strftime("%m/%d/%Y") %></li>
+      <li>Durée souhaitée : <%= @appointment.duration %> minutes</li>
+      <li>Prix de la visite : <%= @appointment.house.price_visit %>€</li>
     </ul>
     <p> À très vite sur AirBatiment !
   </body>

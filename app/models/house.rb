@@ -1,6 +1,8 @@
 class House < ApplicationRecord
   belongs_to :owner
   belongs_to :city
+  has_many :appointments
+  has_many :users, through: :appointments
 
   validates :title,
             presence: true,

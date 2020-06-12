@@ -2,7 +2,7 @@ class Appointment < ApplicationRecord
   after_create :meeting_notification_owner, :meeting_notification_user
 
   belongs_to :user
-  belongs_to :owner
+  belongs_to :house
 
   validates :duration,
             presence: true,

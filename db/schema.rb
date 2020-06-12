@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 2020_06_11_083637) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "owner_id"
+    t.bigint "house_id"
     t.integer "duration", default: 120
     t.datetime "date_start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stripe_customer_id"
-    t.index ["owner_id"], name: "index_appointments_on_owner_id"
+    t.index ["house_id"], name: "index_appointments_on_house_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -83,6 +83,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_083637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "appointments", "owners"
+  add_foreign_key "appointments", "houses"
   add_foreign_key "appointments", "users"
 end

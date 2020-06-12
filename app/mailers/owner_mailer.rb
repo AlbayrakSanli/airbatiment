@@ -1,9 +1,9 @@
 class OwnerMailer < ApplicationMailer
-  default from: 'airbatiment@yopmail.fr'
+  default from: 'airbatiment@yopmail.com'
 
   def meeting_notification_owner(appointment)
     @appointment = appointment
-    @owner = appointment.owner
+    @owner = appointment.house.owner
     @user = appointment.user
 
     mail(to: @owner.email, subject: "Vous avez reçu une demande de rdv !")

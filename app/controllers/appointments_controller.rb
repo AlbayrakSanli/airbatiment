@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(user_id: params[:user], owner_id: params[:owner], duration: params[:duration], date_start: params[:date_start])
+    @appointment = Appointment.new(user_id: params[:user], house_id: params[:house], duration: params[:duration], date_start: params[:date_start])
 
     if @appointment.save
       flash[:success] = "Appointment registration successfully saved"
