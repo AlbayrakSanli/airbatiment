@@ -22,20 +22,6 @@
 
 
     <div class="col-md-4">
-      <h3><b>Informations</b></h3>
-      <p class="text-muted">
-        <%= @house.price_visit %>€/visite</br>
-        Propriétaire : <b><%= @owner.first_name %> <%= @owner.last_name %></b>
-      </p>
-      <h4>Détails de la maison</h4>
-      <p>
-        <span class="text-muted">Surface</span></br>
-        <%= @house.area %>m²
-      </p>
-      <p>
-        <span class="text-muted">Type</span></br>
-        <%= @house.room %> pièces
-      </p>
       <% if current_owner == @owner %>
         <%= link_to "Modifier infos", :class => "btn btn-primary btn-sm text-center" %>
       <% end %>
@@ -48,13 +34,63 @@
 
   <div class="row">
     <div class="col-md-8">
-      <h3><b>About</b></h3>
+      <h3><b>Description</b></h3>
       <p class="text-justify"><%= @house.description %></p>
+
+      <hr>
+
+      <h3><b>Informations</b></h3>
+      <p class="text-muted">
+        <strong><%= @house.price_visit %>€</strong>/visite</br>
+        Propriétaire : <b><%= @owner.first_name %> <%= @owner.last_name %></b>
+      </p>
+
+      <hr>
+
+      <h4>Détails de la maison</h4>
+      <p>
+        <span class="text-muted">Surface</span></br>
+        <%= @house.area %>m²
+      </p>
+      <p>
+        <span class="text-muted">Type</span></br>
+        <%= @house.room %> pièces
+      </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 border rounded">
+      <div class="mt-5">
+        <h3><strong>Réservation</strong></h3>
       <% if user_signed_in? %>
-        <%= link_to "Prendre rdv", new_appointment_path(id: @house.id), class: "btn btn-outline-primary" %>
+
+        <%= form_tag appointments_path, method: "post" do %>
+
+          <div>
+              <%= hidden_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
+              <%= hidden_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
+          </div>
+
+          <div>
+             <div>
+              <%= label_tag 'Date du rendez-vous' %>
+              <%= date_field_tag 'date_start', nil, class: 'form-control' %>
+              <br/><br/>
+            </div>
+
+             <div>
+              <%= label_tag 'Durée (entre 60 et 120 minutes)' %>
+              <%= text_field_tag 'duration', "60", class: 'form-control' %>
+              <br/><br/>
+            </div>
+          </div>
+
+        <div class="text-center">
+          <%= submit_tag "Prendre rdv", class: "btn btn-outline-primary" %>
+        </div>
+
+        <% end %>
+
       <% end %>
+    </div>
     </div>
   </div>
 

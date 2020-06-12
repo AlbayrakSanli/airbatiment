@@ -1,22 +1,13 @@
 <div class="container">
-  <%= @house.title %>
+  <h2><%= @house.title %></h2>
 </div>
 
 <div class="container">
   <%= form_tag appointments_path, method: "post" do %>
 
     <div class="form-row">
-       <div class="form-group col-md-6">
-        <%= label_tag 'Maison' %>
-        <%= text_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
-        <br/><br/>
-      </div>
-
-       <div class="form-group col-md-6">
-        <%= label_tag 'Visiteur' %>
-        <%= text_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
-        <br/><br/>
-      </div>
+        <%= hidden_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
+        <%= hidden_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
     </div>
 
     <div class="form-row">
@@ -33,7 +24,7 @@
       </div>
     </div>
 
-  <%= submit_tag "Soumettre le rdv", class: "btn btn-outline-primary" %>
+  <%= submit_tag "Réserver", class: "btn btn-primary" %>
 
   <% end %>
 </div>
