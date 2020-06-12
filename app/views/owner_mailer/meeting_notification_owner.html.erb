@@ -4,13 +4,16 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut !</h1>
+    <h1>Bonjour <%= @owner.first_name %>!</h1>
     <p>
-      ??? souhaite prendre rdv avec vous.
+       Un utilisateur souhaite prendre rdv avec vous.</br>
+       Nous vous invitons à vous rapprocher par email de votre interlocuteur pour convenir des détails du rdv : <%= @user.email %>.
     </p>
-    <p>
-      Pour accéder à ton espace client, connecte-toi via : .
-    </p>
+    <p>Récapitulatif du rdv :</p>
+    <ul>
+      <li>Date : <%= @appointment.date_start %></li>
+      <li>Durée souhaitée : <%= @appointment.duration %></li>
+    </ul>
     <p> À très vite sur AirBatiment !
   </body>
 </html>

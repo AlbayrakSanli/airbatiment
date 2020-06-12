@@ -4,8 +4,8 @@ class OwnerMailer < ApplicationMailer
   def meeting_notification_owner(appointment)
     @appointment = appointment
     @owner = appointment.owner
-    @url  = 'http://monsite.fr/login'
+    @user = appointment.user
 
-    mail(to: @owner.email, subject: "Quelqu'un souhaite prendre rdv avec vous !")
+    mail(to: @owner.email, subject: "Vous avez reçu une demande de rdv !")
   end
 end

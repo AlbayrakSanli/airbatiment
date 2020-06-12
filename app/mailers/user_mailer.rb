@@ -3,8 +3,8 @@ class UserMailer < ApplicationMailer
 
   def meeting_notification_user(appointment)
     @appointment = appointment
+    @owner = appointment.owner
     @user = appointment.user
-    @url  = 'http://monsite.fr/login'
 
     mail(to: @user.email, subject: 'Votre rdv a été enregistré !')
   end
