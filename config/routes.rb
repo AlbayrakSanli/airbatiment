@@ -4,8 +4,17 @@ Rails.application.routes.draw do
   resources :houses
   root "houses#index"
   resources :teams, only: :index
+
   resources :users
+  resources :users, only: [:show] do
+    resources :avatars, only: [:create]
+  end
+
   resources :owners
+  resources :owners, only: [:show] do
+    resources :avatars, only: [:create]
+  end
+
   resources :appointments
   resources :charges
 
