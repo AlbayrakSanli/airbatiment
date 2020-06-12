@@ -22,14 +22,12 @@ class UsersController < ApplicationController
       first_name: params[:first_name],
       last_name: params[:last_name],
       description: params[:description],
-      email: params[:email],
-      password: params[:password],
     )
-      redirect_to root_path
+      redirect_to user_path
       flash[:success] = "La maison a bien été modifié!"
     else
       flash[:danger] = "La saisie n'a pas un format valide, merci de saisir à nouveau"
-      redirect_to user_path
+      redirect_to edit_user_path
     end
   end
 

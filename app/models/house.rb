@@ -1,4 +1,5 @@
 class House < ApplicationRecord
+  has_one_attached :avatar
   belongs_to :owner
   belongs_to :city
   has_many :appointments

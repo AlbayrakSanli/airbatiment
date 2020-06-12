@@ -3,6 +3,15 @@
 </div>
 
 <div class="card-body">
+  <h3>Changer d'avatar ?</h3>
+  <%= form_tag user_avatars_path(@user), multipart: true do %>
+    <%= file_field_tag :avatar %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+</div>
+
+<div class="card-body">
+  <h3>Changer vos paramètres personnels !</h3>
   <%= form_tag url_for(action: 'update'), method: "patch" do %>
     <form method="PATCH">
       <br>
@@ -20,17 +29,6 @@
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Description</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" name="description" minlength="5" maxlength="140" placeholder="Décrivez-vous !"><%= @user.description %></textarea>
-      </div>
-      <br>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Adresse mail</label>
-          <input class="form-control rounded-0" type="text" name="email"  placeholder="Votre nouvelle adresse mail" minlength="5" maxlength="40" value="<%= @user.email %>">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Mot de passe</label>
-          <input class="form-control rounded-0" type="password" name="password"  placeholder="Votre nouveau mot de passe" minlength="5" maxlength="20">
-        </div>
       </div>
       <br>
       <div class="container text-center">

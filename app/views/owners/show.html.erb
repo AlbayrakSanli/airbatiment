@@ -1,14 +1,18 @@
 <div class="container profil">
   <div class="avatar-flip">
-    <img src="http://media.idownloadblog.com/wp-content/uploads/2012/04/Phil-Schiller-headshot-e1362692403868.jpg" height="150" width="150">
-    <img src="http://i1112.photobucket.com/albums/k497/animalsbeingdicks/abd-3-12-2015.gif~original" height="150" width="150">
+    <%if @owner.avatar.attached?%>
+      <%= image_tag @owner.avatar, alt: 'avatar' %>
+    <%else%>
+      <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+    <%end%>
   </div>
   <h2><%= @owner.first_name %> <% @owner.last_name %></h2>
   <h4><%= @owner.email %></h4>
   <p><%= @owner.description %></p>
   <% if owner_signed_in? %>
     <% if @owner.id == current_owner.id %>
-      <%= link_to 'Edit', edit_user_path(@owner), class:"btn btn-success" %>
+      <%= link_to 'Params connect', edit_owner_registration_path(@owner), class:"btn btn-success" %>
+      <%= link_to 'Edit', edit_owner_path(@owner), class:"btn btn-success" %>
       <%= link_to 'Destroy', @owner, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
     <% end %>
   <% end %>
