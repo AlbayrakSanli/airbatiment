@@ -57,16 +57,16 @@
         <%= @house.room %> pièces
       </p>
     </div>
+      <% if user_signed_in? %>
     <div class="col-md-4 border rounded">
       <div class="mt-5">
         <h3><strong>Réservation</strong></h3>
-      <% if user_signed_in? %>
 
         <%= form_tag appointments_path, method: "post" do %>
 
           <div>
-              <%= hidden_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
-              <%= hidden_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
+            <%= hidden_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
+            <%= hidden_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
           </div>
 
           <div>
