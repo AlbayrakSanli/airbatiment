@@ -1,10 +1,12 @@
 class ChargesController < ApplicationController
   def new
+    @house = House.find(params[:id])
   end
 
   def create
+    @house = House.find(params[:id])
     # Amount in cents
-    @amount = 500
+    @amount = @house.price_visit
 
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
@@ -15,7 +17,7 @@ class ChargesController < ApplicationController
       customer: customer.id,
       amount: @amount,
       description: 'Rails Stripe customer',
-      currency: 'usd',
+      currency: 'eur',
     })
 
   rescue Stripe::CardError => e
