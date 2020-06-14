@@ -14,7 +14,7 @@ Le site ne permet ni de vendre, ni de louer un bien. Il met juste en relation un
 **Configuration**
 Entrez les commandes suivantes dans votre terminal préféré :
 
-git clone git@github.com:AlbayrakSanli/airbatiment.git
+git clone git@github.com/AlbayrakSanli/airbatiment.git
 
 `cd airbatiment`
 
