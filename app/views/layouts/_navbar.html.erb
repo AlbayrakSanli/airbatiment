@@ -1,7 +1,7 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-custom fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <%= link_to 'AirBatiment', root_path , class: 'navbar-brand'%>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-target="#navbarResponsive" aria-controls="navbarResponsive"  >
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -10,10 +10,11 @@
         <li class="nav-item">
           <%= link_to 'Accueil', root_path , class: 'nav-link'%>
         </li>
+
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Mon profil/Se déconnecter
+              User
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Mon profil", user_path(current_user), class: 'dropdown-item'%>
@@ -23,7 +24,7 @@
         <% elsif owner_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Mon profil/Se déconnecter
+              Owner
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Mon profil", owner_path(current_owner), class: 'dropdown-item'%>
@@ -32,11 +33,9 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Connexion particulier", new_user_session_path, class: 'nav-link'%>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Connexion</button>
           </li>
-          <li class="nav-item">
-            <%= link_to "Connexion en tant que conseiller", new_owner_session_path, class: 'nav-link border rounded'%>
-          </li>
+
         <% end %>
 
       </ul>
