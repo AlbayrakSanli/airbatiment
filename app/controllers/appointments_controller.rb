@@ -7,11 +7,13 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(user_id: params[:user], house_id: params[:house], duration: params[:duration], date_start: params[:date_start])
+    @availability = Availability.find(params[:id])
+    @appointment = Appointment.new(user_id: params[:user_id], house_id: params[:house_id])
 
     if @appointment.save
+      @availability.update(appointment_id: @appointment.id)
       flash[:success] = "Appointment registration successfully saved"
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       flash[:failure] = "Appointment registration saving failed"
       redirect_to root_path
