@@ -4,14 +4,6 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :house
 
-  validates :duration,
-            presence: true,
-            numericality: { only_integer: true, greater_than: 59, less_than: 120 }
-
-  validates :date_start,
-            presence: true
-  # validate :date_start_future?
-
   private
 
   def date_start_future?
