@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_145026) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2020_06_16_065637) do
+=======
+ActiveRecord::Schema.define(version: 2020_06_16_072854) do
+>>>>>>> development
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,18 +42,32 @@ ActiveRecord::Schema.define(version: 2020_06_12_145026) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "owner_id"
+    t.bigint "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "stripe_customer_id"
+    t.index ["house_id"], name: "index_appointments_on_house_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "availabilities", force: :cascade do |t|
+    t.bigint "house_id"
+    t.bigint "appointment_id"
     t.integer "duration", default: 120
     t.datetime "date_start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "stripe_customer_id"
-    t.index ["owner_id"], name: "index_appointments_on_owner_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
+    t.index ["appointment_id"], name: "index_availabilities_on_appointment_id"
+    t.index ["house_id"], name: "index_availabilities_on_house_id"
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "furkans", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,10 +80,9 @@ ActiveRecord::Schema.define(version: 2020_06_12_145026) do
     t.integer "area"
     t.integer "room"
     t.bigint "owner_id"
-    t.bigint "city_id"
+    t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_houses_on_city_id"
     t.index ["owner_id"], name: "index_houses_on_owner_id"
   end
 
@@ -105,6 +122,6 @@ ActiveRecord::Schema.define(version: 2020_06_12_145026) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "appointments", "owners"
+  add_foreign_key "appointments", "houses"
   add_foreign_key "appointments", "users"
 end

@@ -8,7 +8,7 @@ class CreateHouses < ActiveRecord::Migration[5.2]
       t.integer :area
       t.integer :room
       t.references :owner, index: true
-      t.references :city, index: true
+      t.string :city
 
       t.timestamps
     end
