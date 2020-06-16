@@ -4,6 +4,8 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :house
 
+  has_one :availability
+
   private
 
   def date_start_future?
@@ -13,11 +15,11 @@ class Appointment < ApplicationRecord
   end
 
   def meeting_notification_owner
-    OwnerMailer.meeting_notification_owner(self).deliver_now
+    OwnerMailer.meeting_notification_owner(self).deliver_later(wait: 2.second)
   end
 
   def meeting_notification_user
-    UserMailer.meeting_notification_user(self).deliver_now
+    UserMailer.meeting_notification_user(self).deliver_later(wait: 2.second)
   end
 
 end
