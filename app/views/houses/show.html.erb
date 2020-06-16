@@ -94,9 +94,13 @@
 
         <% end %>
 
-      <% end %>
-    </div>
-    </div>
-  </div>
 
+      </div>
+    </div>
+      <% @availabilities.each do |availability| %>
+        <%= availability.date_start %>
+        <%= link_to "Prendre RDV", appointments_path(id: availability.id, house_id: @house.id, user_id: current_user.id), method: "post", class:"btn btn-primary" %></br>
+      <% end %>
+      <% end %>
+  </div>
 </div>
