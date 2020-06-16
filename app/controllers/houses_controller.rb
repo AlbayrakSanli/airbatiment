@@ -1,8 +1,12 @@
 class HousesController < ApplicationController
-  before_action :authenticate_owner!, except: [:index, :show]
+  before_action :authenticate_owner!, except: [:index, :show, :search]
 
   def index
     @houses = House.all
+  end
+
+  def search
+    @houses = House.where("city LIKE ?", "%" + params[:q] + "%")
   end
 
   def show

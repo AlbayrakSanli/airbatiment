@@ -34,6 +34,6 @@ City.destroy_all
     area: rand(60..300),
     room: rand(2..10),
     owner: Owner.all.sample,
-    city: City.all.sample
+    city: Faker::Address.city
   )
 end

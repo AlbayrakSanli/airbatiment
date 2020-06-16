@@ -1,21 +1,4 @@
-<div class="row text-center">
-
-
-<% @houses.sort.each do |house| %>
-
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header"><%= house.title %></h4>
-          <a href="#"><img class="card-img-top" src="https://airbatiment.s3.eu-west-3.amazonaws.com/MaisonTest1.jpeg" alt=""></a>
-          <div class="card-body">
-            <p class="card-text text-justify"><%= house.description %></p>
-            <p class="card-text"><%= house.price_visit %>€/visite</p>
-          </div>
-          <div class="card-footer">
-            <%= link_to "Plus d'informations ?", house_path(house.id), class:"btn btn-info" %>
-          </div>
-        </div>
-    </div>
-<% end %>
-
-</div>
+<form class="form-inline" action="/search">
+  <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
