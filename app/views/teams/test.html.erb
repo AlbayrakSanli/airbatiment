@@ -1,177 +1,538 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<offer-filters class="search_menu_component ng-isolate-scope" search-filters="search_filters" search-location="search_filters.location" favorites-counter="favoritesCounter" show-favorites-only="showFavoritesOnly" on-update-filters="updateResults(filters)" on-update-location="updateLocation(location)" on-toggle-favorites="toggleFavorites(value)" on-toggle-signup-modal="toggleSignupModal(value)" filters-loaded="$root.config.filtersLoaded" show-updating-location-spinner="showUpdatingLocationSpinner">
 
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><div class="pd-wrap">
-		<div class="container">
-	        <div class="heading-section">
-	            <h2>Product Details</h2>
-	        </div>
-	        <div class="row">
-	        	<div class="col-md-6">
-	        		<div id="slider" class="owl-carousel product-slider">
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/MaisonTest2.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133029Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=235793df37d884bf6864f3dfb3d4392c84d73e7584c18d361c79b6bc1e63fb19" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest1.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133403Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=38fe62abf554c3030b7aa081b3e05bd7918f072bf3a767c30d70839ddfa4ff12" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest2.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133431Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=18312f1e54e81070b37e252c5e2e55055b3b9f8299da8f9e573f15aa4fa394b1" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest3.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133505Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=656496e002e721556730a418c63360fa4fcc17b9572e4e53a7c5c98362650bb0" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest4.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133538Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=ab115a1ba5c13760d6fd8db589029a361ed82c1fe823b5771624aeb2fe633d27" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest5.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133608Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=b6ff96e340881c0bb99c56143bef908a6a8c5d37edddd880a5ced51abb49760f" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest6.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133641Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=36abfa721ac374d7a363b48a6921aac9ef864a27d58bebf69f05dc3f6e27c50a" />
-						</div>
-					</div>
-					<div id="thumb" class="owl-carousel product-thumb">
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/MaisonTest2.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133029Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=235793df37d884bf6864f3dfb3d4392c84d73e7584c18d361c79b6bc1e63fb19" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest1.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133403Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=38fe62abf554c3030b7aa081b3e05bd7918f072bf3a767c30d70839ddfa4ff12" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest2.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133431Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=18312f1e54e81070b37e252c5e2e55055b3b9f8299da8f9e573f15aa4fa394b1" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest3.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133505Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=656496e002e721556730a418c63360fa4fcc17b9572e4e53a7c5c98362650bb0" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest4.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133538Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=ab115a1ba5c13760d6fd8db589029a361ed82c1fe823b5771624aeb2fe633d27" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest5.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133608Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=b6ff96e340881c0bb99c56143bef908a6a8c5d37edddd880a5ced51abb49760f" />
-						</div>
-						<div class="item">
-						  	<img src="https://airbatiment.s3.eu-west-3.amazonaws.com/PhotoTest6.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133641Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=36abfa721ac374d7a363b48a6921aac9ef864a27d58bebf69f05dc3f6e27c50a" />
-						</div>
-					</div>
-	        	</div>
-	        	<div class="col-md-6">
-	        		<div class="product-dtl">
-        				<div class="product-info">
-		        			<div class="product-name">Variable Product</div>
-		        			<div class="reviews-counter">
-								<div class="rate">
-								    <input type="radio" id="star5" name="rate" value="5" checked />
-								    <label for="star5" title="text">5 stars</label>
-								    <input type="radio" id="star4" name="rate" value="4" checked />
-								    <label for="star4" title="text">4 stars</label>
-								    <input type="radio" id="star3" name="rate" value="3" />
-								    <label for="star3" title="text">3 stars</label>
-								    <input type="radio" id="star2" name="rate" value="2" />
-								    <label for="star2" title="text">2 stars</label>
-								    <input type="radio" id="star1" name="rate" value="1" />
-								    <label for="star1" title="text">1 star</label>
-								  </div>
-								<span>3 Reviews</span>
-							</div>
-		        			<div class="product-price-discount"><span>$39.00</span></div>
-		        		</div>
-	        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	        			<div class="row">
-	        				<div class="col-md-6">
-	        					<label for="size">Size</label>
-								<select id="size" name="size" class="form-control">
-									<option>S</option>
-									<option>M</option>
-									<option>L</option>
-									<option>XL</option>
-								</select>
-	        				</div>
-	        				<div class="col-md-6">
-	        					<label for="color">Color</label>
-								<select id="color" name="color" class="form-control">
-									<option>Blue</option>
-									<option>Green</option>
-									<option>Red</option>
-								</select>
-	        				</div>
-	        			</div>
-	        			<div class="product-count">
-	        				<label for="size">Quantity</label>
-	        				<form action="#" class="display-flex">
-							    <div class="qtyminus">-</div>
-							    <input type="text" name="quantity" value="1" class="qty">
-							    <div class="qtyplus">+</div>
-							</form>
-							<a href="#" class="round-black-btn">Add to Cart</a>
-	        			</div>
-	        		</div>
-	        	</div>
-	        </div>
-	        <div class="product-info-tabs">
-		        <ul class="nav nav-tabs" id="myTab" role="tablist">
-				  	<li class="nav-item">
-				    	<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
-				  	</li>
-				  	<li class="nav-item">
-				    	<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
-				  	</li>
-				</ul>
-				<div class="tab-content" id="myTabContent">
-				  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-				  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-				  	</div>
-				  	<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-				  		<div class="review-heading">REVIEWS</div>
-				  		<p class="mb-20">There are no reviews yet.</p>
-				  		<form class="review-form">
-		        			<div class="form-group">
-			        			<label>Your rating</label>
-			        			<div class="reviews-counter">
-									<div class="rate">
-									    <input type="radio" id="star5" name="rate" value="5" />
-									    <label for="star5" title="text">5 stars</label>
-									    <input type="radio" id="star4" name="rate" value="4" />
-									    <label for="star4" title="text">4 stars</label>
-									    <input type="radio" id="star3" name="rate" value="3" />
-									    <label for="star3" title="text">3 stars</label>
-									    <input type="radio" id="star2" name="rate" value="2" />
-									    <label for="star2" title="text">2 stars</label>
-									    <input type="radio" id="star1" name="rate" value="1" />
-									    <label for="star1" title="text">1 star</label>
-									</div>
-								</div>
-							</div>
-		        			<div class="form-group">
-			        			<label>Your message</label>
-			        			<textarea class="form-control" rows="10"></textarea>
-			        		</div>
-			        		<div class="row">
-				        		<div class="col-md-6">
-				        			<div class="form-group">
-					        			<input type="text" name="" class="form-control" placeholder="Name*">
-					        		</div>
-					        	</div>
-				        		<div class="col-md-6">
-				        			<div class="form-group">
-					        			<input type="text" name="" class="form-control" placeholder="Email Id*">
-					        		</div>
-					        	</div>
-					        </div>
-					        <button class="round-black-btn">Submit Review</button>
-			        	</form>
-				  	</div>
+	<section class="search_menu">
+		<div class="search_filters_container">
+
+			<!-- ngIf: $ctrl.showFavoritesOnly -->
+
+			<!--<location-filter-profile-algolia class="search_filter_component" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateLocation(location)" search-location="$ctrl.searchFilters.location" search-params="$ctrl.searchParams" show-updating-location-spinner="$ctrl.showUpdatingLocationSpinner"></location-filter-profile-algolia>-->
+
+			<location-filter-profile-custom class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateLocation(location)" search-location="$ctrl.searchFilters.location" search-params="$ctrl.searchParams" show-updating-location-spinner="$ctrl.showUpdatingLocationSpinner">
+
+	<div class="search_filter" id="location_search_filter">
+
+      <div class="location_filter_input_container">
+         <input id="location_filter_input_profile" type="text" autocomplete="off" class="search_filter_input" placeholder="Où lancer une recherche ?"><ul id="autoComplete_list" class="autoComplete_dropdown"></ul>
+      </div>
+
+		<button class="search_filter_btn location_filter_btn" ng-click="$ctrl.updateLocation()" ng-class="{disabled_input: $ctrl.showUpdatingLocationSpinner}">
+
+			<i class="fas fa-search" ng-hide="$ctrl.showUpdatingLocationSpinner"></i>
+
+            <div class="location-spinner ng-hide" ng-show="$ctrl.showUpdatingLocationSpinner">
+               <div class="ring-spinner-container">
+                  <div class="ring-spinner">
+                     <div></div>
+                     <div></div>
+                     <div></div>
+                     <div></div>
+                  </div>
+              </div>
+            </div>
+		</button>
+	</div>
+
+</location-filter-profile-custom>
+
+			<budget-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" budget="$ctrl.searchFilters.budget" search-location="$ctrl.searchFilters.location" ng-show="$ctrl.widthHelper.budget.visible">
+
+	<div class="search_filter">
+		<button id="search_budget_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_search_filter: $ctrl.dropdownOpened}">
+
+			<!-- ngIf: (!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') && (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString) --><span ng-if="(!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') &amp;&amp; (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString)" class="ng-scope">Tous budgets</span><!-- end ngIf: (!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') && (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString) -->
+			<!-- ngIf: ($ctrl.minBudgetString && $ctrl.minBudgetString != '0') && (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString) -->
+			<!-- ngIf: (!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') && ($ctrl.maxBudgetString && $ctrl.maxBudgetString != $ctrl.countryMaxBudgetString) -->
+			<!-- ngIf: ($ctrl.minBudgetString && $ctrl.minBudgetString != '0') && ($ctrl.maxBudgetString && $ctrl.maxBudgetString != $ctrl.countryMaxBudgetString) -->
+
+			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+			<!-- ngIf: $ctrl.dropdownOpened -->
+		</button>
+		<div id="budget_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="search_budget_btn">
+			<div class="search_filter_dropdown_row">
+
+				<div class="dropdown_row_select" id="filter_budget_min_btn">
+
+					<select ng-model="$ctrl.minBudgetString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMinOpened=!$ctrl.dropdownMinOpened" click-outside="$ctrl.dropdownMinOpened=false" outside-if-not="filter_budget_min_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
+						<option value="" selected="selected">Budget min</option>
+						<option value="0" class="ng-binding">0 €</option>
+						<!-- ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="50" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">50 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="150" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">150 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="250" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">250 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="350" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">350 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="450" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">450 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="500" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">500 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="550" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">550 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="600" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">600 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="650" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">650 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="700" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">700 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="750" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">750 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="800" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">800 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="850" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">850 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="900" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">900 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="950" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">950 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1000" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1000 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets -->
+					</select>
+
+					<!-- ngIf: !$ctrl.dropdownMinOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMinOpened"></i><!-- end ngIf: !$ctrl.dropdownMinOpened -->
+					<!-- ngIf: $ctrl.dropdownMinOpened -->
+
 				</div>
-			</div>
 
-			<div style="text-align:center;font-size:14px;padding-bottom:20px;">Get free icon packs for your next project at <a href="http://iiicons.in/" target="_blank" style="color:#ff5e63;font-weight:bold;">www.iiicons.in</a></div>
+				<span class="sub_select_separator">
+					-
+				</span>
+
+				<div class="dropdown_row_select" id="filter_budget_max_btn">
+
+					<select ng-model="$ctrl.maxBudgetString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMaxOpened=!$ctrl.dropdownMaxOpened" click-outside="$ctrl.dropdownMaxOpened=false" outside-if-not="filter_budget_max_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
+						<option value="" selected="selected">Budget max</option>
+						<!-- ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="50" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">50 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="150" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">150 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="250" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">250 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="350" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">350 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="450" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">450 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="500" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">500 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="550" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">550 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="600" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">600 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="650" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">650 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="700" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">700 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="750" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">750 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="800" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">800 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="850" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">850 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="900" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">900 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="950" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">950 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1000" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1000 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets -->
+						<option value="1500" class="ng-binding">1500 € et +</option>
+					</select>
+
+					<!-- ngIf: !$ctrl.dropdownMaxOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMaxOpened"></i><!-- end ngIf: !$ctrl.dropdownMaxOpened -->
+					<!-- ngIf: $ctrl.dropdownMaxOpened -->
+
+				</div>
+
+			</div>
 		</div>
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</budget-filter>
+
+			<sex-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" sex="$ctrl.searchFilters.sex" ng-show="$ctrl.widthHelper.sex.visible">
+
+	<div class="search_filter">
+
+		<button id="sex_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened, missing_filter: $ctrl.counter == 0}">
+			<!-- ngIf: $ctrl.sex.women && $ctrl.sex.men --><span ng-if="$ctrl.sex.women &amp;&amp; $ctrl.sex.men" class="ng-scope">Tous sexes</span><!-- end ngIf: $ctrl.sex.women && $ctrl.sex.men -->
+			<!-- ngIf: $ctrl.sex.women && !$ctrl.sex.men -->
+			<!-- ngIf: $ctrl.sex.men && !$ctrl.sex.women -->
+
+			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+			<!-- ngIf: $ctrl.dropdownOpened -->
+		</button>
+
+		<div id="sex_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="sex_btn">
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="sex_women" ng-model="$ctrl.sex.women" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="sex_women">Femmes</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="sex_men" ng-model="$ctrl.sex.men" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="sex_men">Hommes</label>
+			</div>
+		</div>
+	</div>
+
+</sex-filter>
+
+			<age-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" age="$ctrl.searchFilters.age" ng-show="$ctrl.widthHelper.age.visible">
+
+     <div class="search_filter">
+     	<button id="age_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened}">
+     		<!-- ngIf: (!$ctrl.minString || $ctrl.minString == '18') && (!$ctrl.maxString || $ctrl.maxString == '99') --><span ng-if="(!$ctrl.minString || $ctrl.minString == '18') &amp;&amp; (!$ctrl.maxString || $ctrl.maxString == '99')" class="ng-scope">Tous âges</span><!-- end ngIf: (!$ctrl.minString || $ctrl.minString == '18') && (!$ctrl.maxString || $ctrl.maxString == '99') -->
+     		<!-- ngIf: ($ctrl.minString && $ctrl.minString != '18') && (!$ctrl.maxString || $ctrl.maxString == '99') -->
+     		<!-- ngIf: (!$ctrl.minString || $ctrl.minString == '18') && ($ctrl.maxString && $ctrl.maxString != '99') -->
+     		<!-- ngIf: ($ctrl.minString && $ctrl.minString != '18') && ($ctrl.maxString && $ctrl.maxString != '99') -->
+     		<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+     		<!-- ngIf: $ctrl.dropdownOpened -->
+     	</button>
+     	<div id="age_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="age_btn">
+     		<div class="search_filter_dropdown_row">
+
+     			<div class="dropdown_row_select" id="age_filter_min_btn">
+
+                         <select ng-model="$ctrl.minString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMinOpened=!$ctrl.dropdownMinOpened" click-outside="$ctrl.dropdownMinOpened=false" outside-if-not="age_filter_min_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
+                              <option value="" selected="selected">Âge min</option>
+                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
+                         </select>
+
+     				<!-- ngIf: !$ctrl.dropdownMinOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMinOpened"></i><!-- end ngIf: !$ctrl.dropdownMinOpened -->
+     				<!-- ngIf: $ctrl.dropdownMinOpened -->
+
+     			</div>
+
+     			<span class="sub_select_separator">
+     				-
+     			</span>
+
+     			<div class="dropdown_row_select" id="age_filter_max_btn">
+
+                         <select ng-model="$ctrl.maxString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMaxOpened=!$ctrl.dropdownMaxOpened" click-outside="$ctrl.dropdownMaxOpened=false" outside-if-not="age_filter_max_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
+                              <option value="" selected="selected">Âge max</option>
+                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope ng-hide">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
+                              <option value="99" class="ng-binding">99 ans et +</option>
+                         </select>
+
+     				<!-- ngIf: !$ctrl.dropdownMaxOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMaxOpened"></i><!-- end ngIf: !$ctrl.dropdownMaxOpened -->
+     				<!-- ngIf: $ctrl.dropdownMaxOpened -->
+
+     			</div>
+
+     		</div>
+     	</div>
+     </div>
+
+</age-filter>
+
+			<activity-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" activity="$ctrl.searchFilters.activity" ng-show="$ctrl.widthHelper.activity.visible">
+
+	<div class="search_filter">
+
+		<button id="activity_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened, missing_filter: $ctrl.counter == 0}">
+			<!-- ngIf: $ctrl.counter == 0 -->
+			<!-- ngIf: $ctrl.counter > 1 && $ctrl.counter < $ctrl.counterMax -->
+			<!-- ngIf: $ctrl.counter == $ctrl.counterMax --><span ng-if="$ctrl.counter == $ctrl.counterMax" class="ng-scope">Toutes activités</span><!-- end ngIf: $ctrl.counter == $ctrl.counterMax -->
+
+			<!-- ngIf: $ctrl.activity.student && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.activity.worker && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.activity.independent && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.activity.unemployed && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.activity.retired && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.activity.other_activity && $ctrl.counter == 1 -->
+
+			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+			<!-- ngIf: $ctrl.dropdownOpened -->
+		</button>
+
+		<div id="activity_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="activity_btn">
+			<div class="search_filter_dropdown_row" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
+				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')">
+					<i class="fas fa-times"></i>Tout décocher
+				</div>
+			</div>
+			<div class="search_filter_dropdown_row ng-hide" ng-show="$ctrl.checkHelperStatus == 'check'">
+				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('check')">
+					<i class="fas fa-check"></i>Tout cocher
+				</div>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="activity_student" ng-model="$ctrl.activity.student" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_student">Étudiants</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="activity_worker" ng-model="$ctrl.activity.worker" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_worker">Salariés</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="activity_independent" ng-model="$ctrl.activity.independent" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_independent">Indépendants</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="activity_unemployed" ng-model="$ctrl.activity.unemployed" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_unemployed">Sans activité</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="activity_retired" ng-model="$ctrl.activity.retired" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_retired">Retraités</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="activity_other_activity" ng-model="$ctrl.activity.other_activity" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_other_activity">Autre</label>
+			</div>
+
+		</div>
+	</div>
+
+</activity-filter>
+
+			<country-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" country="$ctrl.searchFilters.country" ng-show="$ctrl.widthHelper.country.visible">
+
+	<div class="search_filter">
+
+		<button id="country_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened, missing_filter: $ctrl.counter == 0}">
+			<!-- ngIf: $ctrl.counter == 0 -->
+			<!-- ngIf: $ctrl.counter > 1 && $ctrl.counter < $ctrl.counterMax -->
+			<!-- ngIf: $ctrl.counter == $ctrl.counterMax --><span ng-if="$ctrl.counter == $ctrl.counterMax" class="ng-scope">Tous pays</span><!-- end ngIf: $ctrl.counter == $ctrl.counterMax -->
+
+			<!-- ngIf: $ctrl.country.fr && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.be && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.ch && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.de && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.it && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.es && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.gb && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.nl && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.us && $ctrl.counter == 1 -->
+			<!-- ngIf: $ctrl.country.other && $ctrl.counter == 1 -->
+
+			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+			<!-- ngIf: $ctrl.dropdownOpened -->
+		</button>
+
+		<div id="country_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="country_btn">
+			<div class="search_filter_dropdown_row" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
+				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')">
+					<i class="fas fa-times"></i>Tout décocher
+				</div>
+			</div>
+			<div class="search_filter_dropdown_row ng-hide" ng-show="$ctrl.checkHelperStatus == 'check'">
+				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('check')">
+					<i class="fas fa-check"></i>Tout cocher
+				</div>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_fr" ng-model="$ctrl.country.fr" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_fr">France</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_be" ng-model="$ctrl.country.be" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_be">Belgique</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_ch" ng-model="$ctrl.country.ch" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_ch">Suisse</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_de" ng-model="$ctrl.country.de" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_de">Allemagne</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_it" ng-model="$ctrl.country.it" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_it">Italie</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_es" ng-model="$ctrl.country.es" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_es">Espagne</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_gb" ng-model="$ctrl.country.gb" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_gb">Royaume-Uni</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_nl" ng-model="$ctrl.country.nl" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_nl">Pays-Bas</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_us" ng-model="$ctrl.country.us" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_us">États-Unis</label>
+			</div>
+			<div class="search_filter_dropdown_row">
+				<input type="checkbox" id="country_other" ng-model="$ctrl.country.other" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_other">Autres</label>
+			</div>
+
+		</div>
+	</div>
+
+</country-filter>
+
+			<date-filter-profile class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" date="$ctrl.searchFilters.date" ng-show="$ctrl.widthHelper.date.visible">
+
+	<div class="search_filter">
+		<div id="date_filter_btn" class="search_filter_btn search_filter_select" ng-class="{active_filter: $ctrl.dropdownOpened}">
+
+			<select ng-options="option.label for option in $ctrl.availableOptions track by option.value" ng-model="$ctrl.selectedOption" ng-change="$ctrl.updateMin()" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="date_filter_btn" class="ng-pristine ng-untouched ng-valid ng-not-empty"><option label="Toutes dates" value="-60" selected="selected">Toutes dates</option><option label="Moins d'un mois" value="-30">Moins d'un mois</option><option label="Moins de 2 semaines" value="-15">Moins de 2 semaines</option><option label="Moins d'une semaine" value="-7">Moins d'une semaine</option><option label="Moins de 3 jours" value="-3">Moins de 3 jours</option><option label="Ajoutées aujourd'hui" value="0">Ajoutées aujourd'hui</option></select>
+
+			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+			<!-- ngIf: $ctrl.dropdownOpened -->
+
+		</div>
+	</div>
+
+
+</date-filter-profile>
+
+			<div class="search_filter ng-hide" ng-show="$ctrl.widthHelper.moreFilters.visible">
+				<button id="show_more_filters_btn" class="search_filter_btn" ng-click="$ctrl.dropdownMoreOpened=!$ctrl.dropdownMoreOpened" ng-class="{active_filter: $ctrl.dropdownMoreOpened}">
+					Plus de filtres
+					<i class="fas fa-plus" ng-show="!$ctrl.dropdownMoreOpened"></i>
+					<i class="fas fa-minus ng-hide" ng-show="$ctrl.dropdownMoreOpened"></i>
+				</button>
+				<div id="hidden_filters_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownMoreOpened" click-outside="$ctrl.dropdownMoreOpened=false" outside-if-not="show_more_filters_btn" style="max-height: 278px; right: 0px;">
+
+					<sex-filter-hidden on-update="$ctrl.updateFilter(prop, value)" sex="$ctrl.searchFilters.sex" ng-show="!$ctrl.widthHelper.sex.visible" class="ng-isolate-scope ng-hide">
+
+	<div class="hidden_filter">
+
+		<label class="hidden_filter_label">Sexe</label>
+
+		<div class="search_filter">
+
+			<div class="hidden_filter_2_columns">
+
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_sex_women" ng-model="$ctrl.sex.women" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_sex_women">Femmes</label>
+				</div>
+
+			</div>
+
+			<div class="hidden_filter_2_columns">
+
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_sex_men" ng-model="$ctrl.sex.men" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_sex_men">Hommes</label>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</sex-filter-hidden>
+
+					<age-filter-hidden on-update="$ctrl.updateFilter(prop, value)" age="$ctrl.searchFilters.age" ng-show="!$ctrl.widthHelper.age.visible" class="ng-isolate-scope ng-hide">
+
+	<div class="hidden_filter">
+
+		<label class="hidden_filter_label">Âge</label>
+
+		<div class="search_filter">
+
+			<div class="search_filter_dropdown_row">
+
+     			<div class="dropdown_row_select" id="hidden_age_filter_min_btn">
+
+                         <select ng-model="$ctrl.minString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMinOpened=!$ctrl.dropdownMinOpened" click-outside="$ctrl.dropdownMinOpened=false" outside-if-not="hidden_age_filter_min_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
+                              <option value="" selected="selected">Âge min</option>
+                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
+                         </select>
+
+     				<!-- ngIf: !$ctrl.dropdownMinOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMinOpened"></i><!-- end ngIf: !$ctrl.dropdownMinOpened -->
+     				<!-- ngIf: $ctrl.dropdownMinOpened -->
+
+     			</div>
+
+				<span class="sub_select_separator">
+					-
+				</span>
+
+     			<div class="dropdown_row_select" id="hidden_age_filter_max_btn">
+
+                         <select ng-model="$ctrl.maxString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMaxOpened=!$ctrl.dropdownMaxOpened" click-outside="$ctrl.dropdownMaxOpened=false" outside-if-not="hidden_age_filter_max_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
+                              <option value="" selected="selected">Âge max</option>
+                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope ng-hide">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
+                              <option value="99" class="ng-binding">99 ans et +</option>
+                         </select>
+
+     				<!-- ngIf: !$ctrl.dropdownMaxOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMaxOpened"></i><!-- end ngIf: !$ctrl.dropdownMaxOpened -->
+     				<!-- ngIf: $ctrl.dropdownMaxOpened -->
+
+     			</div>
+
+			</div>
+		</div>
+	</div>
+
+</age-filter-hidden>
+
+					<activity-filter-hidden on-update="$ctrl.updateFilter(prop, value)" activity="$ctrl.searchFilters.activity" ng-show="!$ctrl.widthHelper.activity.visible" class="ng-isolate-scope ng-hide">
+
+	<div class="hidden_filter">
+
+		<label class="hidden_filter_label">Activité</label>
+
+		<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
+			(<i class="fas fa-times"></i>Tout décocher)
+		</div>
+
+		<div class="dropdown_shortcut ng-hide" ng-click="$ctrl.toggleCheckboxes('check')" ng-show="$ctrl.checkHelperStatus == 'check'">
+			(<i class="fas fa-check"></i>Tout cocher)
+		</div>
+
+		<div class="search_filter">
+
+			<div class="hidden_filter_2_columns">
+
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_activity_student" ng-model="$ctrl.activity.student" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_student">Étudiants</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_activity_worker" ng-model="$ctrl.activity.worker" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_worker">Salariés</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_activity_independent" ng-model="$ctrl.activity.independent" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_independent">Indépendants</label>
+				</div>
+
+			</div>
+
+			<div class="hidden_filter_2_columns">
+
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_activity_unemployed" ng-model="$ctrl.activity.unemployed" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_unemployed">Sans activité</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_activity_retired" ng-model="$ctrl.activity.retired" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_retired">Retraités</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_activity_other_activity" ng-model="$ctrl.activity.other_activity" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_other_activity">Autre</label>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</activity-filter-hidden>
+
+					<country-filter-hidden on-update="$ctrl.updateFilter(prop, value)" country="$ctrl.searchFilters.country" ng-show="!$ctrl.widthHelper.country.visible" class="ng-isolate-scope ng-hide">
+
+	<div class="hidden_filter">
+
+		<label class="hidden_filter_label">Pays</label>
+
+		<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
+			(<i class="fas fa-times"></i>Tout décocher)
+		</div>
+
+		<div class="dropdown_shortcut ng-hide" ng-click="$ctrl.toggleCheckboxes('check')" ng-show="$ctrl.checkHelperStatus == 'check'">
+			(<i class="fas fa-check"></i>Tout cocher)
+		</div>
+
+		<div class="search_filter">
+
+			<div class="hidden_filter_2_columns">
+
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_fr" ng-model="$ctrl.country.fr" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_fr">France</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_be" ng-model="$ctrl.country.be" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_be">Belgique</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_ch" ng-model="$ctrl.country.ch" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_ch">Suisse</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_de" ng-model="$ctrl.country.de" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_de">Allemagne</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_it" ng-model="$ctrl.country.it" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_it">Italie</label>
+				</div>
+
+			</div>
+
+			<div class="hidden_filter_2_columns">
+
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_es" ng-model="$ctrl.country.es" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_es">Espagne</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_gb" ng-model="$ctrl.country.gb" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_gb">Royaume-Uni</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_nl" ng-model="$ctrl.country.nl" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_nl">Pays-Bas</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_us" ng-model="$ctrl.country.us" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_us">États-Unis</label>
+				</div>
+				<div class="search_filter_dropdown_row">
+					<input type="checkbox" id="hidden_country_other" ng-model="$ctrl.country.other" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_other">Autres</label>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</country-filter-hidden>
+
+					<date-filter-profile-hidden on-update="$ctrl.updateFilter(prop, value)" date="$ctrl.searchFilters.date" ng-show="!$ctrl.widthHelper.date.visible" class="ng-isolate-scope ng-hide">
+
+	<div class="hidden_filter">
+
+		<label class="hidden_filter_label">Date d'inscription</label>
+
+		<div class="search_filter">
+
+			<div id="hidden_filter_date_btn" class="search_filter_btn search_filter_select" ng-class="{active_filter: $ctrl.dropdownOpened}">
+
+				<select ng-options="option.label for option in $ctrl.availableOptions track by option.value" ng-model="$ctrl.selectedOption" ng-change="$ctrl.updateMin()" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="hidden_filter_date_btn" class="ng-pristine ng-untouched ng-valid ng-not-empty"><option label="Toutes dates" value="-60" selected="selected">Toutes dates</option><option label="Moins d'un mois" value="-30">Moins d'un mois</option><option label="Moins de 2 semaines" value="-15">Moins de 2 semaines</option><option label="Moins d'une semaine" value="-7">Moins d'une semaine</option><option label="Moins de 3 jours" value="-3">Moins de 3 jours</option><option label="Ajoutées aujourd'hui" value="0">Ajoutées aujourd'hui</option></select>
+
+				<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
+				<!-- ngIf: $ctrl.dropdownOpened -->
+
+			</div>
+
+		</div>
+	</div>
+
+</date-filter-profile-hidden>
+
+				</div>
+			</div>
+		</div>
+		<div id="search_tools_container" ng-class="{left_floated: $ctrl.windowWidth > 1600}">
+			<show-favorites-tool on-toggle="$ctrl.toggleFavorites(value)" favorites-counter="$ctrl.favoritesCounter" class="ng-isolate-scope">
+
+	<div class="search_tool">
+		<button id="show_favorites_btn" class="tool_btn" ng-click="$ctrl.toggleFavorites()" ng-class="{show_favorites_active: $ctrl.showFavoritesOnly}">
+			<!-- ngIf: !$ctrl.showFavoritesOnly --><i class="far fa-heart ng-scope" ng-if="!$ctrl.showFavoritesOnly"></i><!-- end ngIf: !$ctrl.showFavoritesOnly -->
+			<!-- ngIf: $ctrl.showFavoritesOnly -->
+			Mes favoris
+			<span ng-show="$ctrl.favoritesCounter > 0" class="ng-binding ng-hide">(0)</span>
+		</button>
+	</div>
+
+</show-favorites-tool>
+		</div>
+	</section>
+
+</offer-filters>
