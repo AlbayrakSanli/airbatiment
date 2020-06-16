@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 2020_06_16_065637) do
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "house_id"
+    t.bigint "owner_id"
+    t.integer "duration", default: 120
+    t.datetime "date_start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stripe_customer_id"
-    t.index ["house_id"], name: "index_appointments_on_house_id"
+    t.index ["owner_id"], name: "index_appointments_on_owner_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -71,9 +73,10 @@ ActiveRecord::Schema.define(version: 2020_06_16_065637) do
     t.integer "area"
     t.integer "room"
     t.bigint "owner_id"
-    t.string "city"
+    t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_houses_on_city_id"
     t.index ["owner_id"], name: "index_houses_on_owner_id"
   end
 
@@ -113,6 +116,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_065637) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "appointments", "houses"
+  add_foreign_key "appointments", "owners"
   add_foreign_key "appointments", "users"
 end
