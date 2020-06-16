@@ -16,8 +16,6 @@
  *= require modern-business
  */
 
-
-
  html, body {
    height: 100%;
    padding: 0;
@@ -52,4 +50,18 @@
 
 .bg-slide {
     background-color: rgba(0, 0, 0, 0.5)
+}
+
+/* layouts/_jumbotron.html.erb */
+.change {
+ background: url('https://previews.123rf.com/images/in4mal/in4mal1606/in4mal160600207/59566424-vue-ext%C3%A9rieure-de-la-maison-moderne-et-belle-avec-grand-jardin-panorama.jpg') no-repeat center center;
+ text-align: center;
+}
+
+header {
+ margin-bottom: 0px;
+ height: 300px;
+ color: white; /* Le texte sera affiché en blanc */
+ text-shadow: black 0.3em 0.3em 0.3em;
+ background:transparent;
 }
