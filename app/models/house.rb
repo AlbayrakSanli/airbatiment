@@ -1,7 +1,6 @@
 class House < ApplicationRecord
   has_one_attached :avatar
   belongs_to :owner
-  belongs_to :city
   has_many :appointments
   has_many :users, through: :appointments
 
@@ -31,5 +30,8 @@ class House < ApplicationRecord
             presence: true,
             numericality: { only_integer: true, greater_than: 2}
 
+  validates :city,
+            presence: true,
+            length: { in: 2..30 }
 
 end
