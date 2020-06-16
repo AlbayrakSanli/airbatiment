@@ -5,6 +5,7 @@ class UserMailer < ApplicationMailer
     @appointment = appointment
     @owner = appointment.house.owner
     @user = appointment.user
+    @availability = @appointment.availability
 
     mail(to: @user.email, subject: 'Votre rdv a été enregistré !')
   end

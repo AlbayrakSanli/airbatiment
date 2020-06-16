@@ -5,6 +5,7 @@ class OwnerMailer < ApplicationMailer
     @appointment = appointment
     @owner = appointment.house.owner
     @user = appointment.user
+    @availability = @appointment.availability
 
     mail(to: @owner.email, subject: "Vous avez reçu une demande de rdv !")
   end
