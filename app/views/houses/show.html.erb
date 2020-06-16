@@ -16,6 +16,7 @@
     <% if owner_signed_in? %>
       <% if @house.owner.id == current_owner.id %>
         <%= link_to 'Edit', edit_house_path(@house), class:"btn btn-success" %>
+        <%= link_to "Ajouter créneau", new_availability_path(house_id: @house.id), class:"btn btn-warning" %>
         <%= link_to 'Destroy', @house, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
       <% end %>
     <% end %>

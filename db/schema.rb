@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2020_06_16_072854) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
+  create_table "availabilities", force: :cascade do |t|
+    t.bigint "house_id"
+    t.bigint "appointment_id"
+    t.integer "duration", default: 120
+    t.datetime "date_start"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_availabilities_on_appointment_id"
+    t.index ["house_id"], name: "index_availabilities_on_house_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false

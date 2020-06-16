@@ -17,3 +17,7 @@
     <% end %>
   <% end %>
 </div>
+
+<% @owner.houses.each do |house| %>
+<%= link_to "Voir maison", house_path(house.id), class:"btn btn-primary" %>
+<% end %>

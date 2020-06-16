@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'pg_search'
 gem "aws-sdk-s3", require: false
 gem 'devise', '~> 4.2'
 gem 'devise-i18n'

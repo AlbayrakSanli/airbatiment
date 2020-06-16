@@ -1,538 +1,60 @@
-<offer-filters class="search_menu_component ng-isolate-scope" search-filters="search_filters" search-location="search_filters.location" favorites-counter="favoritesCounter" show-favorites-only="showFavoritesOnly" on-update-filters="updateResults(filters)" on-update-location="updateLocation(location)" on-toggle-favorites="toggleFavorites(value)" on-toggle-signup-modal="toggleSignupModal(value)" filters-loaded="$root.config.filtersLoaded" show-updating-location-spinner="showUpdatingLocationSpinner">
-
-	<section class="search_menu">
-		<div class="search_filters_container">
-
-			<!-- ngIf: $ctrl.showFavoritesOnly -->
-
-			<!--<location-filter-profile-algolia class="search_filter_component" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateLocation(location)" search-location="$ctrl.searchFilters.location" search-params="$ctrl.searchParams" show-updating-location-spinner="$ctrl.showUpdatingLocationSpinner"></location-filter-profile-algolia>-->
-
-			<location-filter-profile-custom class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateLocation(location)" search-location="$ctrl.searchFilters.location" search-params="$ctrl.searchParams" show-updating-location-spinner="$ctrl.showUpdatingLocationSpinner">
-
-	<div class="search_filter" id="location_search_filter">
-
-      <div class="location_filter_input_container">
-         <input id="location_filter_input_profile" type="text" autocomplete="off" class="search_filter_input" placeholder="Où lancer une recherche ?"><ul id="autoComplete_list" class="autoComplete_dropdown"></ul>
-      </div>
-
-		<button class="search_filter_btn location_filter_btn" ng-click="$ctrl.updateLocation()" ng-class="{disabled_input: $ctrl.showUpdatingLocationSpinner}">
-
-			<i class="fas fa-search" ng-hide="$ctrl.showUpdatingLocationSpinner"></i>
-
-            <div class="location-spinner ng-hide" ng-show="$ctrl.showUpdatingLocationSpinner">
-               <div class="ring-spinner-container">
-                  <div class="ring-spinner">
-                     <div></div>
-                     <div></div>
-                     <div></div>
-                     <div></div>
-                  </div>
-              </div>
-            </div>
-		</button>
-	</div>
-
-</location-filter-profile-custom>
-
-			<budget-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" budget="$ctrl.searchFilters.budget" search-location="$ctrl.searchFilters.location" ng-show="$ctrl.widthHelper.budget.visible">
-
-	<div class="search_filter">
-		<button id="search_budget_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_search_filter: $ctrl.dropdownOpened}">
-
-			<!-- ngIf: (!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') && (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString) --><span ng-if="(!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') &amp;&amp; (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString)" class="ng-scope">Tous budgets</span><!-- end ngIf: (!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') && (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString) -->
-			<!-- ngIf: ($ctrl.minBudgetString && $ctrl.minBudgetString != '0') && (!$ctrl.maxBudgetString || $ctrl.maxBudgetString == $ctrl.countryMaxBudgetString) -->
-			<!-- ngIf: (!$ctrl.minBudgetString || $ctrl.minBudgetString == '0') && ($ctrl.maxBudgetString && $ctrl.maxBudgetString != $ctrl.countryMaxBudgetString) -->
-			<!-- ngIf: ($ctrl.minBudgetString && $ctrl.minBudgetString != '0') && ($ctrl.maxBudgetString && $ctrl.maxBudgetString != $ctrl.countryMaxBudgetString) -->
-
-			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-			<!-- ngIf: $ctrl.dropdownOpened -->
-		</button>
-		<div id="budget_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="search_budget_btn">
-			<div class="search_filter_dropdown_row">
-
-				<div class="dropdown_row_select" id="filter_budget_min_btn">
-
-					<select ng-model="$ctrl.minBudgetString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMinOpened=!$ctrl.dropdownMinOpened" click-outside="$ctrl.dropdownMinOpened=false" outside-if-not="filter_budget_min_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
-						<option value="" selected="selected">Budget min</option>
-						<option value="0" class="ng-binding">0 €</option>
-						<!-- ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="50" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">50 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="150" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">150 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="250" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">250 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="350" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">350 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="450" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">450 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="500" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">500 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="550" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">550 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="600" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">600 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="650" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">650 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="700" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">700 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="750" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">750 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="800" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">800 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="850" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">850 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="900" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">900 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="950" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">950 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1000" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1000 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.max > budget || !$ctrl.budget.max" ng-if="!$last" class="ng-binding ng-scope">1400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets -->
-					</select>
-
-					<!-- ngIf: !$ctrl.dropdownMinOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMinOpened"></i><!-- end ngIf: !$ctrl.dropdownMinOpened -->
-					<!-- ngIf: $ctrl.dropdownMinOpened -->
-
+<form action="/search">
+	<div class="container-fluid bg-light ">
+		<div class="row align-items-center justify-content-center">
+			<div class="col-md-2 pt-3">
+				<div class="form-group">
+					<div class="form-line">
+						<input class="form-control form-control-lg" name="q" type="text" placeholder="Entrer le nom de la ville" aria-label="Search">
+					</div>
 				</div>
-
-				<span class="sub_select_separator">
-					-
-				</span>
-
-				<div class="dropdown_row_select" id="filter_budget_max_btn">
-
-					<select ng-model="$ctrl.maxBudgetString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMaxOpened=!$ctrl.dropdownMaxOpened" click-outside="$ctrl.dropdownMaxOpened=false" outside-if-not="filter_budget_max_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
-						<option value="" selected="selected">Budget max</option>
-						<!-- ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="50" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">50 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="150" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">150 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="250" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">250 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="350" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">350 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="450" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">450 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="500" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">500 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="550" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">550 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="600" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">600 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="650" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">650 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="700" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">700 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="750" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">750 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="800" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">800 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="850" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">850 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="900" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">900 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="950" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">950 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1000" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1000 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1100" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1100 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1200" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1200 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1300" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1300 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><option value="1400" ng-repeat="budget in $ctrl.availableBudgets" ng-show="$ctrl.budget.min < budget || !$ctrl.budget.min" ng-if="!$last" class="ng-binding ng-scope">1400 €</option><!-- end ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets --><!-- ngIf: !$last --><!-- end ngRepeat: budget in $ctrl.availableBudgets -->
-						<option value="1500" class="ng-binding">1500 € et +</option>
-					</select>
-
-					<!-- ngIf: !$ctrl.dropdownMaxOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMaxOpened"></i><!-- end ngIf: !$ctrl.dropdownMaxOpened -->
-					<!-- ngIf: $ctrl.dropdownMaxOpened -->
-
-				</div>
-
 			</div>
+			<div class="col-md-2 pt-3">
+	     	<div class="form-group ">
+	        <select id="inputState " class="form-control">
+	          <option selected>Brand</option>
+	          <option>BMW</option>
+	          <option>Audi</option>
+	          <option>Maruti</option>
+	          <option>Tesla</option>
+	        </select>
+	      </div>
+	  	</div>
+			<div class="col-md-2 pt-3">
+	     	<div class="form-group">
+	        <select id="inputState" class="form-control">
+	          <option selected>Model</option>
+	          <option>BMW</option>
+	          <option>Audi</option>
+	          <option>Maruti</option>
+	          <option>Tesla</option>
+	        </select>
+	     	</div>
+	  	</div>
+			<div class="col-md-2 pt-3">
+	     	<div class="form-group">
+	        <select id="inputState" class="form-control">
+	          <option selected>Model</option>
+	          <option>BMW</option>
+	          <option>Audi</option>
+	          <option>Maruti</option>
+	          <option>Tesla</option>
+	        </select>
+	     	</div>
+	  	</div>
+			<div class="col-md-2 pt-3">
+	     	<div class="form-group">
+	        <select id="inputState" class="form-control">
+	          <option selected>Model</option>
+	          <option>BMW</option>
+	          <option>Audi</option>
+	          <option>Maruti</option>
+	          <option>Tesla</option>
+	        </select>
+	     	</div>
+	  	</div>
+	    <div class="col-md-2">
+	      <button type="submit" class="btn btn-block btn-lg btn-primary">Recherche</button>
+	    </div>
 		</div>
 	</div>
-
-</budget-filter>
-
-			<sex-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" sex="$ctrl.searchFilters.sex" ng-show="$ctrl.widthHelper.sex.visible">
-
-	<div class="search_filter">
-
-		<button id="sex_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened, missing_filter: $ctrl.counter == 0}">
-			<!-- ngIf: $ctrl.sex.women && $ctrl.sex.men --><span ng-if="$ctrl.sex.women &amp;&amp; $ctrl.sex.men" class="ng-scope">Tous sexes</span><!-- end ngIf: $ctrl.sex.women && $ctrl.sex.men -->
-			<!-- ngIf: $ctrl.sex.women && !$ctrl.sex.men -->
-			<!-- ngIf: $ctrl.sex.men && !$ctrl.sex.women -->
-
-			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-			<!-- ngIf: $ctrl.dropdownOpened -->
-		</button>
-
-		<div id="sex_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="sex_btn">
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="sex_women" ng-model="$ctrl.sex.women" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="sex_women">Femmes</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="sex_men" ng-model="$ctrl.sex.men" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="sex_men">Hommes</label>
-			</div>
-		</div>
-	</div>
-
-</sex-filter>
-
-			<age-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" age="$ctrl.searchFilters.age" ng-show="$ctrl.widthHelper.age.visible">
-
-     <div class="search_filter">
-     	<button id="age_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened}">
-     		<!-- ngIf: (!$ctrl.minString || $ctrl.minString == '18') && (!$ctrl.maxString || $ctrl.maxString == '99') --><span ng-if="(!$ctrl.minString || $ctrl.minString == '18') &amp;&amp; (!$ctrl.maxString || $ctrl.maxString == '99')" class="ng-scope">Tous âges</span><!-- end ngIf: (!$ctrl.minString || $ctrl.minString == '18') && (!$ctrl.maxString || $ctrl.maxString == '99') -->
-     		<!-- ngIf: ($ctrl.minString && $ctrl.minString != '18') && (!$ctrl.maxString || $ctrl.maxString == '99') -->
-     		<!-- ngIf: (!$ctrl.minString || $ctrl.minString == '18') && ($ctrl.maxString && $ctrl.maxString != '99') -->
-     		<!-- ngIf: ($ctrl.minString && $ctrl.minString != '18') && ($ctrl.maxString && $ctrl.maxString != '99') -->
-     		<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-     		<!-- ngIf: $ctrl.dropdownOpened -->
-     	</button>
-     	<div id="age_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="age_btn">
-     		<div class="search_filter_dropdown_row">
-
-     			<div class="dropdown_row_select" id="age_filter_min_btn">
-
-                         <select ng-model="$ctrl.minString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMinOpened=!$ctrl.dropdownMinOpened" click-outside="$ctrl.dropdownMinOpened=false" outside-if-not="age_filter_min_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
-                              <option value="" selected="selected">Âge min</option>
-                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
-                         </select>
-
-     				<!-- ngIf: !$ctrl.dropdownMinOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMinOpened"></i><!-- end ngIf: !$ctrl.dropdownMinOpened -->
-     				<!-- ngIf: $ctrl.dropdownMinOpened -->
-
-     			</div>
-
-     			<span class="sub_select_separator">
-     				-
-     			</span>
-
-     			<div class="dropdown_row_select" id="age_filter_max_btn">
-
-                         <select ng-model="$ctrl.maxString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMaxOpened=!$ctrl.dropdownMaxOpened" click-outside="$ctrl.dropdownMaxOpened=false" outside-if-not="age_filter_max_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
-                              <option value="" selected="selected">Âge max</option>
-                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope ng-hide">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
-                              <option value="99" class="ng-binding">99 ans et +</option>
-                         </select>
-
-     				<!-- ngIf: !$ctrl.dropdownMaxOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMaxOpened"></i><!-- end ngIf: !$ctrl.dropdownMaxOpened -->
-     				<!-- ngIf: $ctrl.dropdownMaxOpened -->
-
-     			</div>
-
-     		</div>
-     	</div>
-     </div>
-
-</age-filter>
-
-			<activity-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" activity="$ctrl.searchFilters.activity" ng-show="$ctrl.widthHelper.activity.visible">
-
-	<div class="search_filter">
-
-		<button id="activity_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened, missing_filter: $ctrl.counter == 0}">
-			<!-- ngIf: $ctrl.counter == 0 -->
-			<!-- ngIf: $ctrl.counter > 1 && $ctrl.counter < $ctrl.counterMax -->
-			<!-- ngIf: $ctrl.counter == $ctrl.counterMax --><span ng-if="$ctrl.counter == $ctrl.counterMax" class="ng-scope">Toutes activités</span><!-- end ngIf: $ctrl.counter == $ctrl.counterMax -->
-
-			<!-- ngIf: $ctrl.activity.student && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.activity.worker && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.activity.independent && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.activity.unemployed && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.activity.retired && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.activity.other_activity && $ctrl.counter == 1 -->
-
-			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-			<!-- ngIf: $ctrl.dropdownOpened -->
-		</button>
-
-		<div id="activity_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="activity_btn">
-			<div class="search_filter_dropdown_row" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
-				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')">
-					<i class="fas fa-times"></i>Tout décocher
-				</div>
-			</div>
-			<div class="search_filter_dropdown_row ng-hide" ng-show="$ctrl.checkHelperStatus == 'check'">
-				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('check')">
-					<i class="fas fa-check"></i>Tout cocher
-				</div>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="activity_student" ng-model="$ctrl.activity.student" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_student">Étudiants</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="activity_worker" ng-model="$ctrl.activity.worker" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_worker">Salariés</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="activity_independent" ng-model="$ctrl.activity.independent" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_independent">Indépendants</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="activity_unemployed" ng-model="$ctrl.activity.unemployed" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_unemployed">Sans activité</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="activity_retired" ng-model="$ctrl.activity.retired" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_retired">Retraités</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="activity_other_activity" ng-model="$ctrl.activity.other_activity" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="activity_other_activity">Autre</label>
-			</div>
-
-		</div>
-	</div>
-
-</activity-filter>
-
-			<country-filter class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" country="$ctrl.searchFilters.country" ng-show="$ctrl.widthHelper.country.visible">
-
-	<div class="search_filter">
-
-		<button id="country_btn" class="search_filter_btn" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" ng-class="{active_filter: $ctrl.dropdownOpened, missing_filter: $ctrl.counter == 0}">
-			<!-- ngIf: $ctrl.counter == 0 -->
-			<!-- ngIf: $ctrl.counter > 1 && $ctrl.counter < $ctrl.counterMax -->
-			<!-- ngIf: $ctrl.counter == $ctrl.counterMax --><span ng-if="$ctrl.counter == $ctrl.counterMax" class="ng-scope">Tous pays</span><!-- end ngIf: $ctrl.counter == $ctrl.counterMax -->
-
-			<!-- ngIf: $ctrl.country.fr && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.be && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.ch && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.de && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.it && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.es && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.gb && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.nl && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.us && $ctrl.counter == 1 -->
-			<!-- ngIf: $ctrl.country.other && $ctrl.counter == 1 -->
-
-			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-			<!-- ngIf: $ctrl.dropdownOpened -->
-		</button>
-
-		<div id="country_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="country_btn">
-			<div class="search_filter_dropdown_row" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
-				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')">
-					<i class="fas fa-times"></i>Tout décocher
-				</div>
-			</div>
-			<div class="search_filter_dropdown_row ng-hide" ng-show="$ctrl.checkHelperStatus == 'check'">
-				<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('check')">
-					<i class="fas fa-check"></i>Tout cocher
-				</div>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_fr" ng-model="$ctrl.country.fr" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_fr">France</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_be" ng-model="$ctrl.country.be" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_be">Belgique</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_ch" ng-model="$ctrl.country.ch" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_ch">Suisse</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_de" ng-model="$ctrl.country.de" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_de">Allemagne</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_it" ng-model="$ctrl.country.it" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_it">Italie</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_es" ng-model="$ctrl.country.es" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_es">Espagne</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_gb" ng-model="$ctrl.country.gb" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_gb">Royaume-Uni</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_nl" ng-model="$ctrl.country.nl" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_nl">Pays-Bas</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_us" ng-model="$ctrl.country.us" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_us">États-Unis</label>
-			</div>
-			<div class="search_filter_dropdown_row">
-				<input type="checkbox" id="country_other" ng-model="$ctrl.country.other" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="country_other">Autres</label>
-			</div>
-
-		</div>
-	</div>
-
-</country-filter>
-
-			<date-filter-profile class="search_filter_component ng-isolate-scope" filters-loaded="$ctrl.filtersLoaded" on-update-width-helper="$ctrl.updateWidthHelper(prop, width, offset)" on-update="$ctrl.updateFilter(prop, value)" date="$ctrl.searchFilters.date" ng-show="$ctrl.widthHelper.date.visible">
-
-	<div class="search_filter">
-		<div id="date_filter_btn" class="search_filter_btn search_filter_select" ng-class="{active_filter: $ctrl.dropdownOpened}">
-
-			<select ng-options="option.label for option in $ctrl.availableOptions track by option.value" ng-model="$ctrl.selectedOption" ng-change="$ctrl.updateMin()" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="date_filter_btn" class="ng-pristine ng-untouched ng-valid ng-not-empty"><option label="Toutes dates" value="-60" selected="selected">Toutes dates</option><option label="Moins d'un mois" value="-30">Moins d'un mois</option><option label="Moins de 2 semaines" value="-15">Moins de 2 semaines</option><option label="Moins d'une semaine" value="-7">Moins d'une semaine</option><option label="Moins de 3 jours" value="-3">Moins de 3 jours</option><option label="Ajoutées aujourd'hui" value="0">Ajoutées aujourd'hui</option></select>
-
-			<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-			<!-- ngIf: $ctrl.dropdownOpened -->
-
-		</div>
-	</div>
-
-
-</date-filter-profile>
-
-			<div class="search_filter ng-hide" ng-show="$ctrl.widthHelper.moreFilters.visible">
-				<button id="show_more_filters_btn" class="search_filter_btn" ng-click="$ctrl.dropdownMoreOpened=!$ctrl.dropdownMoreOpened" ng-class="{active_filter: $ctrl.dropdownMoreOpened}">
-					Plus de filtres
-					<i class="fas fa-plus" ng-show="!$ctrl.dropdownMoreOpened"></i>
-					<i class="fas fa-minus ng-hide" ng-show="$ctrl.dropdownMoreOpened"></i>
-				</button>
-				<div id="hidden_filters_dropdown" class="search_filter_dropdown ng-hide" ng-show="$ctrl.dropdownMoreOpened" click-outside="$ctrl.dropdownMoreOpened=false" outside-if-not="show_more_filters_btn" style="max-height: 278px; right: 0px;">
-
-					<sex-filter-hidden on-update="$ctrl.updateFilter(prop, value)" sex="$ctrl.searchFilters.sex" ng-show="!$ctrl.widthHelper.sex.visible" class="ng-isolate-scope ng-hide">
-
-	<div class="hidden_filter">
-
-		<label class="hidden_filter_label">Sexe</label>
-
-		<div class="search_filter">
-
-			<div class="hidden_filter_2_columns">
-
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_sex_women" ng-model="$ctrl.sex.women" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_sex_women">Femmes</label>
-				</div>
-
-			</div>
-
-			<div class="hidden_filter_2_columns">
-
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_sex_men" ng-model="$ctrl.sex.men" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_sex_men">Hommes</label>
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-</sex-filter-hidden>
-
-					<age-filter-hidden on-update="$ctrl.updateFilter(prop, value)" age="$ctrl.searchFilters.age" ng-show="!$ctrl.widthHelper.age.visible" class="ng-isolate-scope ng-hide">
-
-	<div class="hidden_filter">
-
-		<label class="hidden_filter_label">Âge</label>
-
-		<div class="search_filter">
-
-			<div class="search_filter_dropdown_row">
-
-     			<div class="dropdown_row_select" id="hidden_age_filter_min_btn">
-
-                         <select ng-model="$ctrl.minString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMinOpened=!$ctrl.dropdownMinOpened" click-outside="$ctrl.dropdownMinOpened=false" outside-if-not="hidden_age_filter_min_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
-                              <option value="" selected="selected">Âge min</option>
-                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.max > age || !$ctrl.age.max" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
-                         </select>
-
-     				<!-- ngIf: !$ctrl.dropdownMinOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMinOpened"></i><!-- end ngIf: !$ctrl.dropdownMinOpened -->
-     				<!-- ngIf: $ctrl.dropdownMinOpened -->
-
-     			</div>
-
-				<span class="sub_select_separator">
-					-
-				</span>
-
-     			<div class="dropdown_row_select" id="hidden_age_filter_max_btn">
-
-                         <select ng-model="$ctrl.maxString" ng-change="$ctrl.update()" ng-click="$ctrl.dropdownMaxOpened=!$ctrl.dropdownMaxOpened" click-outside="$ctrl.dropdownMaxOpened=false" outside-if-not="hidden_age_filter_max_btn" class="ng-pristine ng-untouched ng-valid ng-empty">
-                              <option value="" selected="selected">Âge max</option>
-                              <!-- ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="18" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope ng-hide">18 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="20" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">20 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="22" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">22 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="24" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">24 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="26" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">26 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="28" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">28 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="30" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">30 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="35" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">35 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="40" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">40 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="50" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">50 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="60" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">60 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="70" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">70 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="80" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">80 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><option value="90" ng-repeat="age in $ctrl.availableAges" ng-show="$ctrl.age.min < age || !$ctrl.age.min" ng-if="!$last" class="ng-binding ng-scope">90 ans</option><!-- end ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges --><!-- ngIf: !$last --><!-- end ngRepeat: age in $ctrl.availableAges -->
-                              <option value="99" class="ng-binding">99 ans et +</option>
-                         </select>
-
-     				<!-- ngIf: !$ctrl.dropdownMaxOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownMaxOpened"></i><!-- end ngIf: !$ctrl.dropdownMaxOpened -->
-     				<!-- ngIf: $ctrl.dropdownMaxOpened -->
-
-     			</div>
-
-			</div>
-		</div>
-	</div>
-
-</age-filter-hidden>
-
-					<activity-filter-hidden on-update="$ctrl.updateFilter(prop, value)" activity="$ctrl.searchFilters.activity" ng-show="!$ctrl.widthHelper.activity.visible" class="ng-isolate-scope ng-hide">
-
-	<div class="hidden_filter">
-
-		<label class="hidden_filter_label">Activité</label>
-
-		<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
-			(<i class="fas fa-times"></i>Tout décocher)
-		</div>
-
-		<div class="dropdown_shortcut ng-hide" ng-click="$ctrl.toggleCheckboxes('check')" ng-show="$ctrl.checkHelperStatus == 'check'">
-			(<i class="fas fa-check"></i>Tout cocher)
-		</div>
-
-		<div class="search_filter">
-
-			<div class="hidden_filter_2_columns">
-
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_activity_student" ng-model="$ctrl.activity.student" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_student">Étudiants</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_activity_worker" ng-model="$ctrl.activity.worker" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_worker">Salariés</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_activity_independent" ng-model="$ctrl.activity.independent" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_independent">Indépendants</label>
-				</div>
-
-			</div>
-
-			<div class="hidden_filter_2_columns">
-
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_activity_unemployed" ng-model="$ctrl.activity.unemployed" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_unemployed">Sans activité</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_activity_retired" ng-model="$ctrl.activity.retired" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_retired">Retraités</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_activity_other_activity" ng-model="$ctrl.activity.other_activity" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_activity_other_activity">Autre</label>
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-</activity-filter-hidden>
-
-					<country-filter-hidden on-update="$ctrl.updateFilter(prop, value)" country="$ctrl.searchFilters.country" ng-show="!$ctrl.widthHelper.country.visible" class="ng-isolate-scope ng-hide">
-
-	<div class="hidden_filter">
-
-		<label class="hidden_filter_label">Pays</label>
-
-		<div class="dropdown_shortcut" ng-click="$ctrl.toggleCheckboxes('uncheck')" ng-show="$ctrl.checkHelperStatus == 'uncheck'">
-			(<i class="fas fa-times"></i>Tout décocher)
-		</div>
-
-		<div class="dropdown_shortcut ng-hide" ng-click="$ctrl.toggleCheckboxes('check')" ng-show="$ctrl.checkHelperStatus == 'check'">
-			(<i class="fas fa-check"></i>Tout cocher)
-		</div>
-
-		<div class="search_filter">
-
-			<div class="hidden_filter_2_columns">
-
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_fr" ng-model="$ctrl.country.fr" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_fr">France</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_be" ng-model="$ctrl.country.be" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_be">Belgique</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_ch" ng-model="$ctrl.country.ch" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_ch">Suisse</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_de" ng-model="$ctrl.country.de" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_de">Allemagne</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_it" ng-model="$ctrl.country.it" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_it">Italie</label>
-				</div>
-
-			</div>
-
-			<div class="hidden_filter_2_columns">
-
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_es" ng-model="$ctrl.country.es" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_es">Espagne</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_gb" ng-model="$ctrl.country.gb" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_gb">Royaume-Uni</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_nl" ng-model="$ctrl.country.nl" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_nl">Pays-Bas</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_us" ng-model="$ctrl.country.us" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_us">États-Unis</label>
-				</div>
-				<div class="search_filter_dropdown_row">
-					<input type="checkbox" id="hidden_country_other" ng-model="$ctrl.country.other" ng-change="$ctrl.update()" class="ng-pristine ng-untouched ng-valid ng-not-empty"><label for="hidden_country_other">Autres</label>
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-</country-filter-hidden>
-
-					<date-filter-profile-hidden on-update="$ctrl.updateFilter(prop, value)" date="$ctrl.searchFilters.date" ng-show="!$ctrl.widthHelper.date.visible" class="ng-isolate-scope ng-hide">
-
-	<div class="hidden_filter">
-
-		<label class="hidden_filter_label">Date d'inscription</label>
-
-		<div class="search_filter">
-
-			<div id="hidden_filter_date_btn" class="search_filter_btn search_filter_select" ng-class="{active_filter: $ctrl.dropdownOpened}">
-
-				<select ng-options="option.label for option in $ctrl.availableOptions track by option.value" ng-model="$ctrl.selectedOption" ng-change="$ctrl.updateMin()" ng-click="$ctrl.dropdownOpened=!$ctrl.dropdownOpened" click-outside="$ctrl.dropdownOpened=false" outside-if-not="hidden_filter_date_btn" class="ng-pristine ng-untouched ng-valid ng-not-empty"><option label="Toutes dates" value="-60" selected="selected">Toutes dates</option><option label="Moins d'un mois" value="-30">Moins d'un mois</option><option label="Moins de 2 semaines" value="-15">Moins de 2 semaines</option><option label="Moins d'une semaine" value="-7">Moins d'une semaine</option><option label="Moins de 3 jours" value="-3">Moins de 3 jours</option><option label="Ajoutées aujourd'hui" value="0">Ajoutées aujourd'hui</option></select>
-
-				<!-- ngIf: !$ctrl.dropdownOpened --><i class="fas fa-chevron-down ng-scope" ng-if="!$ctrl.dropdownOpened"></i><!-- end ngIf: !$ctrl.dropdownOpened -->
-				<!-- ngIf: $ctrl.dropdownOpened -->
-
-			</div>
-
-		</div>
-	</div>
-
-</date-filter-profile-hidden>
-
-				</div>
-			</div>
-		</div>
-		<div id="search_tools_container" ng-class="{left_floated: $ctrl.windowWidth > 1600}">
-			<show-favorites-tool on-toggle="$ctrl.toggleFavorites(value)" favorites-counter="$ctrl.favoritesCounter" class="ng-isolate-scope">
-
-	<div class="search_tool">
-		<button id="show_favorites_btn" class="tool_btn" ng-click="$ctrl.toggleFavorites()" ng-class="{show_favorites_active: $ctrl.showFavoritesOnly}">
-			<!-- ngIf: !$ctrl.showFavoritesOnly --><i class="far fa-heart ng-scope" ng-if="!$ctrl.showFavoritesOnly"></i><!-- end ngIf: !$ctrl.showFavoritesOnly -->
-			<!-- ngIf: $ctrl.showFavoritesOnly -->
-			Mes favoris
-			<span ng-show="$ctrl.favoritesCounter > 0" class="ng-binding ng-hide">(0)</span>
-		</button>
-	</div>
-
-</show-favorites-tool>
-		</div>
-	</section>
-
-</offer-filters>
+</form>

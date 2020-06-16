@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :avatars, only: [:create]
   end
 
+  resources :availabilities
   resources :appointments
   resources :charges
 
