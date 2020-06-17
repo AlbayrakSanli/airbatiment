@@ -23,6 +23,16 @@ class AppointmentsController < ApplicationController
   def index
   end
 
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    if current_user == @appointment.user
+      @appointment.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to root_path
+    end
+  end
+
   def authenticate_user
     unless current_user
       flash[:danger] = "Not logged in."
