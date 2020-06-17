@@ -1,4 +1,5 @@
 class OwnersController < ApplicationController
+
   def index
   end
 
@@ -35,4 +36,9 @@ class OwnersController < ApplicationController
     Owner.find(params[:id]).delete
     redirect_to root_path
   end
+
+
+
+
+
 end
