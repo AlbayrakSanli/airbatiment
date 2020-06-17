@@ -136,32 +136,26 @@
             <div class="mt-5">
               <h3><strong>Réservation</strong></h3>
 
-              <%= form_tag appointments_path, method: "post" do %>
-
-                <div>
-                  <%= hidden_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
-                  <%= hidden_field_tag 'user', current_user.id, class: 'form-control', :readonly => true %>
-                </div>
-
+              <%= form_tag house_path(@house), method: "get" do %>
                 <div>
                   <div>
                     <%= label_tag 'Date du rendez-vous' %>
-                    <%= date_field_tag 'date_start', nil, class: 'form-control' %>
-                    <br/><br/>
-                  </div>
-
-                  <div>
-                    <%= label_tag 'Durée (entre 60 et 120 minutes)' %>
-                    <%= text_field_tag 'duration', "60", class: 'form-control' %>
-                    <br/><br/>
+                    <%= date_field_tag 'date_start', Date.today, id: "date_select", class: 'form-control' %>
+                    <br/>
+                    <%= submit_tag "Choisir date", class: "mb-3 btn btn-outline-primary" %>
                   </div>
                 </div>
+               <% end %>
 
-                <div class="text-center">
-                  <%= submit_tag "Prendre rdv", class: "mb-3 btn btn-outline-primary" %>
-                </div>
-
+                <% @availabilities.each do |availability| %>
+                 <% if availability.date_start.to_date == @date.to_date && availability.appointment.nil?%>
+                  Dispo : <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %></br>
+                  <% unless owner_signed_in? %>
+                    <%= link_to "Prendre RDV", appointments_path(id: availability.id, house_id: @house.id, user_id: current_user.id), method: "post", class:"btn btn-primary" %></br>
+                  <% end %>
+                <% end %>
               <% end %>
+
             </div>
             <% end %>
         </div>

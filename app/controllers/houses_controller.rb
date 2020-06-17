@@ -13,6 +13,12 @@ class HousesController < ApplicationController
     @house = House.find(params[:id])
     @owner = @house.owner
     @availabilities = @house.availabilities
+    @date = params[:date_start]
+    if @date.nil?
+      @date = Date.today
+    else
+      @date = params[:date_start]
+    end
   end
 
   def edit
