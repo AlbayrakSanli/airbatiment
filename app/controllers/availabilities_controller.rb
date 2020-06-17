@@ -8,7 +8,7 @@ class AvailabilitiesController < ApplicationController
 
     if @availability.save
       flash[:success] = "Availability registration successfully saved"
-      redirect_to root_path
+      redirect_to owner_path(current_owner)
     else
       flash[:failure] = "Availability registration saving failed"
       redirect_to root_path

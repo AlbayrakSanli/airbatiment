@@ -16,4 +16,16 @@
       <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
     <% end %>
   <% end %>
+
 </div>
+
+  <% @appointments.each do |appointment| %>
+  <!-- Loop in availabilities ? -->
+    <% unless appointment.availability.nil? %>
+      Titre maison : <%= appointment.house.title %></br>
+      Date et heure : <%= appointment.availability.date_start.strftime("%d/%m/%Y à %H:%M") %></br>
+      Durée visite : <%= appointment.availability.duration %></br>
+      Prix visite : <%= appointment.house.price_visit %></br>
+      <%= link_to "Voir maison", house_path(appointment.house), class:"btn btn-primary" %>
+    <% end %>
+  <% end %>
