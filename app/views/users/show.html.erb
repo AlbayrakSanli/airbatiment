@@ -11,14 +11,16 @@
   <p><%= @user.description %></p>
   <% if user_signed_in? %>
     <% if @user.id == current_user.id %>
-      <%= link_to 'Params connect', edit_user_registration_path(@user), class:"btn btn-success" %>
-      <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-success" %>
-      <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
+      <%= link_to 'Modifier mon mot de passe', edit_user_registration_path(@user), class:"btn btn-success" %>
+      <%= link_to 'Modifier mon profil', edit_user_path(@user), class:"btn btn-success" %>
+      <%= link_to 'Supprimer mon compte', @user, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
     <% end %>
   <% end %>
 
 </div>
 
+<div class="container">
+  <h2 class="text-center">Mes visites</h2>
   <% @appointments.each do |appointment| %>
   <!-- Loop in availabilities ? -->
     <% unless appointment.availability.nil? %>
@@ -30,3 +32,4 @@
       <%= link_to "Annuler le rdv", appointment_path(appointment.id), method: :delete, class:"btn btn-danger" %></br>
     <% end %>
   <% end %>
+</div>
