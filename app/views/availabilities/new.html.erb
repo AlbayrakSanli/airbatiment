@@ -1,5 +1,15 @@
-
 <div class="mt-3 container">
+  <h2>Gestion des créneaux</h2>
+  <% @availabilities.each do |availability| %>
+    <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %> -
+    <%= availability.duration %> minutes -
+    <% unless availability.appointment_id.nil? %>
+      Réservé
+    <% end %>
+    <%= link_to "Supprimer", availability_path(availability.id), method: :delete, class:"text-danger" %></br>
+  <% end %>
+
+  <h2>Ajout d'un créneau</h2>
   <%= form_tag availabilities_path, method: "post" do %>
 
     <div>

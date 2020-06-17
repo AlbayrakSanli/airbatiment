@@ -18,6 +18,28 @@
   <% end %>
 </div>
 
-<% @owner.houses.each do |house| %>
-<%= link_to "Voir maison", house_path(house.id), class:"btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-6">
+
+      <h3>Mes maisons</h3>
+
+      <% @owner.houses.each do |house| %>
+        <%= link_to "Voir maison", house_path(house.id), class:"btn btn-primary" %>
+        <% house.availabilities.each do |availability| %>
+          <%= availability.date_start %></br>
+          <% unless availability.appointment_id.nil? %>
+            <%= availability.appointment_id %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Mes visites</h3>
+    </div>
+
+  </div>
+</div>
