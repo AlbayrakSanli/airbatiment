@@ -144,9 +144,9 @@
 
                 <% @availabilities.each do |availability| %>
                  <% if availability.date_start.to_date == @date.to_date && availability.appointment.nil?%>
-                  <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %></br>
+                  <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %> -
                   <% unless owner_signed_in? %>
-                    <%= link_to "Prendre RDV", appointments_path(id: availability.id, house_id: @house.id, user_id: current_user.id), method: "post", class:"btn btn-primary" %></br>
+                    <%= link_to "Prendre RDV", new_charge_path(id: availability.id, house_id: @house.id, user_id: current_user.id), class: "mt-1 btn-sm btn-primary" %>
                   <% end %>
                 <% end %>
               <% end %>
