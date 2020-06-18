@@ -34,9 +34,6 @@ class ChargesController < ApplicationController
       redirect_to root_path
     end
 
-    OwnerMailer.meeting_notification_owner(@appointment).deliver_later(wait: 2.second)
-    UserMailer.meeting_notification_user(@appointment).deliver_later(wait: 2.second)
-
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
