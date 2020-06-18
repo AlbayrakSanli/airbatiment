@@ -1,6 +1,7 @@
 class AvailabilitiesController < ApplicationController
   def new
     @house = House.find(params[:house_id])
+    @availabilities = @house.availabilities
   end
 
   def create
@@ -11,6 +12,16 @@ class AvailabilitiesController < ApplicationController
       redirect_to owner_path(current_owner)
     else
       flash[:failure] = "Availability registration saving failed"
+      render :new
+    end
+  end
+
+  def destroy
+    @availability = Availability.find(params[:id])
+    if current_owner == @availability.house.owner
+      @availability.destroy
+      redirect_to owner_path(current_owner)
+    else
       redirect_to root_path
     end
   end

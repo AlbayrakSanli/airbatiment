@@ -15,4 +15,8 @@
           data-description="Visite AirBatiment"
           data-amount="<%= @house.price_visit * 100 %>"
           data-locale="auto"></script>
+
+<%= hidden_field_tag :id, @availability.id %>
+<%= hidden_field_tag :house_id, @house.id %>
+<%= hidden_field_tag :user_id, current_user.id %>
 <% end %>

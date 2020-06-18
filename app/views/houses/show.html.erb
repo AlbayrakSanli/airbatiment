@@ -118,22 +118,17 @@
           <div class="col-md-6">
             <% if owner_signed_in? %>
               <% if @house.owner.id == current_owner.id %>
-                <%= link_to 'Edit', edit_house_path(@house), class:"btn btn-success" %>
-                <%= link_to "Ajouter créneau", new_availability_path(house_id: @house.id), class:"btn btn-warning" %>
-                <%= link_to 'Destroy', @house, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
+                <%= link_to 'Modifier infos', edit_house_path(@house), class:"btn btn-success" %>
+                <%= link_to "Gérer les créneaux", new_availability_path(house_id: @house.id), class:"btn btn-warning" %>
+                <%= link_to 'Supprimer', @house, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
               <% end %>
-            <% end %>
-          </div>
-          <div class="col-md-6">
-            <% if current_owner == @owner %>
-              <%= link_to "Modifier infos", :class => "btn btn-primary btn-sm text-center" %>
             <% end %>
           </div>
         </div>
 
         <% if user_signed_in? %>
           <div class="mb-3 col-md-12 border rounded"  style="max-height: 400px;">
-            <div class="mt-5">
+            <div class="my-5">
               <h3><strong>Réservation</strong></h3>
 
               <%= form_tag house_path(@house), method: "get" do %>
@@ -149,9 +144,9 @@
 
                 <% @availabilities.each do |availability| %>
                  <% if availability.date_start.to_date == @date.to_date && availability.appointment.nil?%>
-                  Dispo : <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %></br>
+                  <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %> -
                   <% unless owner_signed_in? %>
-                    <%= link_to "Prendre RDV", appointments_path(id: availability.id, house_id: @house.id, user_id: current_user.id), method: "post", class:"btn btn-primary" %></br>
+                    <%= link_to "Prendre RDV", new_charge_path(id: availability.id, house_id: @house.id, user_id: current_user.id), class: "mt-1 btn-sm btn-primary" %>
                   <% end %>
                 <% end %>
               <% end %>

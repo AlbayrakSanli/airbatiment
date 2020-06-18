@@ -11,13 +11,41 @@
   <p><%= @owner.description %></p>
   <% if owner_signed_in? %>
     <% if @owner.id == current_owner.id %>
-      <%= link_to 'Params connect', edit_owner_registration_path(@owner), class:"btn btn-success" %>
-      <%= link_to 'Edit', edit_owner_path(@owner), class:"btn btn-success" %>
-      <%= link_to 'Destroy', @owner, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
+      <%= link_to 'Modifier mon mot de passe', edit_owner_registration_path(@owner), class:"btn btn-success" %>
+      <%= link_to 'Modifier mon profil', edit_owner_path(@owner), class:"btn btn-success" %>
+      <%= link_to 'Supprimer mon compte', @owner, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
     <% end %>
   <% end %>
 </div>
 
-<% @owner.houses.each do |house| %>
-<%= link_to "Voir maison", house_path(house.id), class:"btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-6">
+
+      <h3>Mes maisons</h3>
+
+      <% @owner.houses.each do |house| %>
+        <%= house.title %>
+        <%= link_to "Voir maison", house_path(house.id), class:"btn-sm btn-outline-primary" %>
+      <% end %>
+
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Mes visites</h3>
+
+      <% @owner.houses.each do |house| %>
+        <%= house.title %></br>
+        <% house.availabilities.each do |availability| %>
+          <% unless availability.appointment_id.nil? %>
+          - <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %>
+          (<%= availability.duration %> minutes)</br>
+          <% end %>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  </div>
+</div>
