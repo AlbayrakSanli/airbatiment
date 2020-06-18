@@ -4,36 +4,34 @@
     <%= availability.date_start.strftime("%d/%m/%Y à %H:%M") %> -
     <%= availability.duration %> minutes -
     <% unless availability.appointment_id.nil? %>
-      Réservé
+      <strong>Réservé</strong>
     <% end %>
     <%= link_to "Supprimer", availability_path(availability.id), method: :delete, class:"text-danger" %></br>
   <% end %>
 
-  <h2>Ajout d'un créneau</h2>
+  <h3 class="mt-3">Ajout d'un créneau</h3>
   <%= form_tag availabilities_path, method: "post" do %>
 
     <div>
       <%= hidden_field_tag 'house', @house.id, class: 'form-control', :readonly => true %>
     </div>
 
-    <div>
-
-
-      <div>
+    <div class="row">
+      <div class="col-sm-6">
         <%= label_tag 'Date du rendez-vous' %>
         <%= datetime_field_tag 'date_start', Time.now.strftime("%d/%m/%Y à %H:%M"), class: 'form-control' %>
         <br/><br/>
       </div>
 
-       <div>
+       <div class="col-sm-6">
         <%= label_tag 'Durée (entre 60 et 120 minutes)' %>
         <%= text_field_tag 'duration', "60", class: 'form-control' %>
         <br/><br/>
       </div>
-    </div>
+  </div>
 
   <div class="text-center">
-    <%= submit_tag "Ajouter", class: "mb-3 btn btn-outline-primary" %>
+    <%= submit_tag "Ajouter", class: "mb-3 btn-lg btn-outline-primary" %>
   </div>
 
   <% end %>
