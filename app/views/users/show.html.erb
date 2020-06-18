@@ -20,16 +20,35 @@
 </div>
 
 <div class="container">
-  <h2 class="text-center">Mes visites</h2>
-  <% @appointments.each do |appointment| %>
-  <!-- Loop in availabilities ? -->
+  <h2 class="mb-3 text-center">Mes visites</h2>
+   <div class="row">
+    <% @appointments.each do |appointment| %>
     <% unless appointment.availability.nil? %>
-      Titre maison : <%= appointment.house.title %></br>
-      Date et heure : <%= appointment.availability.date_start.strftime("%d/%m/%Y à %H:%M") %></br>
-      Durée visite : <%= appointment.availability.duration %></br>
-      Prix visite : <%= appointment.house.price_visit %>€</br>
-      <%= link_to "Voir maison", house_path(appointment.house), class:"btn btn-primary" %>
-      <%= link_to "Annuler le rdv", appointment_path(appointment.id), method: :delete, class:"btn btn-danger" %></br>
+     <div class="col-sm-4">
+      <div class="mb-3 card" style="width: 100%;">
+        <div class="bg-light text-dark card-header">
+        <%= appointment.house.title %></br>
+        </div>
+        <div class="card-body">
+          <div class="mb-2">
+            <ul>
+              <li>
+                <span class="text-muted">Date et heure :</span> <strong><%= appointment.availability.date_start.strftime("%d/%m/%Y à %H:%M") %></strong></br>
+              </li>
+              <li>
+                <span class="text-muted">Durée</span> <strong><%= appointment.availability.duration %> minutes</strong></br>
+              </li>
+              <li>
+                <span class="text-muted">Prix de la visite : </span><strong><%= appointment.house.price_visit %>€</strong></br>
+              </li>
+            </ul>
+          </div>
+        <%= link_to "Voir maison", house_path(appointment.house), class:"btn btn-primary" %>
+        <%= link_to "Annuler le rdv", appointment_path(appointment.id), method: :delete, class:"btn btn-danger" %></br>
+        </div>
+      </div>
+    </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
