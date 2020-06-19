@@ -1,5 +1,12 @@
 class House < ApplicationRecord
-  has_one_attached :avatar
+  has_one_attached :apicture
+  has_one_attached :bpicture
+  has_one_attached :cpicture
+  has_one_attached :dpicture
+  has_one_attached :epicture
+  has_one_attached :fpicture
+  has_one_attached :gpicture
+
   belongs_to :owner
   has_many :appointments
   has_many :users, through: :appointments

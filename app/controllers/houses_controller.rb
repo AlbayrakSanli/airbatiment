@@ -40,7 +40,7 @@ class HousesController < ApplicationController
       area: params[:area],
       room: params[:room],
       owner: current_owner,
-      city: City.find_by(name: params[:city])
+      city: params[:city]
     )
     if @house.save
       redirect_to root_path
@@ -61,7 +61,7 @@ class HousesController < ApplicationController
       area: params[:area],
       room: params[:room],
       owner: current_owner,
-      city: City.find_by(name: params[:city])
+      city: params[:city]
     )
       redirect_to root_path
       flash[:success] = "La maison a bien été modifié!"

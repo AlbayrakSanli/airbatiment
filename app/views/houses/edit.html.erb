@@ -1,53 +1,97 @@
-<div class="container">
-  <h1 class="mb-1 text-primary">Editer votre maison</h1>
+<div class="col-md-12 mb-3 mt-5 text-center border-bottom">
+  <h1 class="mb-2 text-primary">Mettre en ligne une maison</h1>
 </div>
 
+<%= form_tag house_path, method: "put" do %>
+
+  <div class="d-flex form-row">
+    <div class="col-md-6 mb-3 align-self-center">
+      <div class="mb-3">
+        <%= label_tag 'Title' %>
+        <%= text_field_tag 'title', @house.title, class: 'form-control', minlength: 5, maxlength: 40, placeholder: "Quel est le titre de votre annonce ?" %>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <%= label_tag 'Taille de la maison' %>
+          <%= number_field_tag 'area', @house.area, class: 'form-control', min: 60, max: 500 %>
+        </div>
+        <div class="col-md-6 mb-3">
+          <%= label_tag 'Nombre de pièce' %>
+          <%= number_field_tag 'room', @house.room, class: 'form-control', min: 2, max: 10 %>
+        </div>
+      </div>
+      <div class="mb-3">
+        <%= label_tag 'Description' %>
+        <%= text_area_tag 'description', @house.description, class: 'form-control', minlength: 5, maxlength: 140, placeholder:"Quel est la description de votre maison ?" %>
+      </div>
+    </div>
+
+
+    <div class="col-md-6 align-self-start">
+      <div class="mb-3">
+        <%= label_tag 'Ville' %>
+        <%= text_field_tag 'city', @house.city, class: 'form-control' %>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <%= label_tag 'Prix de la construction' %>
+          <%= number_field_tag 'price_house', @house.price_house, class: 'form-control', min: 100000, max: 500000 %>
+        </div>
+        <div class="col-md-6 mb-3">
+          <%= label_tag 'Prix de la visite' %>
+          <%= number_field_tag 'price_visit', @house.price_visit, class: 'form-control', min: 15, max: 100 %>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+    <%= submit_tag "Créer l'annonce", class: "btn btn-lg btn-primary rounded-2" %>
+
+<% end %>
+
 <div class="card-body">
-  <%= form_tag url_for(action: 'update'), method: "patch" do %>
-    <form method="PATCH">
-      <br>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Title</label>
-          <input class="form-control rounded-0" type="text" name="title" minlength="5" maxlength="140" placeholder="Quel est le titre de votre maison ?">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputState">State</label>
-          <select id="inputState" class="form-control" name="city">
-            <option selected>Choose...</option>
-            <% @cities.each do |city| %>
-              <option><%= city.name %></option>
-            <% end %>
-          </select>
-        </div>
-      </div>
-      <br>
-      <div class="form-group col">
-        <label for="inputEmail4">Description</label>
-        <input class="form-control rounded-0" type="text" name="description" minlength="5" maxlength="140" placeholder="Quel est la description de votre maison ?">
-      </div>
-      <br>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-            <input class="form-control rounded-0" type="number" name="price_house"  placeholder="Quel est le prix de la construction ?" min="100000" max="500000">
-        </div>
-        <div class="form-group col-md-6">
-            <input class="form-control rounded-0" type="number" name="price_visit"  placeholder="Quel est le prix de la visite ?" min="15" max="100">
-        </div>
-      </div>
-      <br>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-            <input class="form-control rounded-0" type="number" name="area"  placeholder="Quel est le taille de la maison ?" min="60" max="500">
-        </div>
-        <div class="form-group col-md-6">
-            <input class="form-control rounded-0" type="number" name="room"  placeholder="Combien de pièces ?" min="2" max="10">
-        </div>
-      </div>
-      <br>
-      <div class="container text-center">
-        <input type="submit" value="Créer l'évènement" class="btn btn-lg btn-primary rounded-2">
-      </div>
-    </form>
+  <h3>Changer images N°1</h3>
+  <%= form_tag house_apictures_path(@house), multipart: true do %>
+    <%= file_field_tag :apicture %>
+    <%= submit_tag "mettre à jour" %>
   <% end %>
+
+  <h3>Changer images N°2</h3>
+  <%= form_tag house_bpictures_path(@house), multipart: true do %>
+    <%= file_field_tag :bpicture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <h3>Changer images N°3</h3>
+  <%= form_tag house_cpictures_path(@house), multipart: true do %>
+    <%= file_field_tag :cpicture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <h3>Changer images N°4</h3>
+  <%= form_tag house_dpictures_path(@house), multipart: true do %>
+    <%= file_field_tag :dpicture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <h3>Changer images N°5</h3>
+  <%= form_tag house_epictures_path(@house), multipart: true do %>
+    <%= file_field_tag :epicture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <h3>Changer images N°6</h3>
+  <%= form_tag house_fpictures_path(@house), multipart: true do %>
+    <%= file_field_tag :fpicture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <h3>Changer images N°7</h3>
+  <%= form_tag house_gpictures_path(@house), multipart: true do %>
+    <%= file_field_tag :gpicture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
 </div>

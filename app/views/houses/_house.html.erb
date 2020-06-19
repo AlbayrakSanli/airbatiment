@@ -3,7 +3,13 @@
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
         <h4 class="card-header"><%= house.title %></h4>
-        <a href="#"><img class="card-img-top" src="https://airbatiment.s3.eu-west-3.amazonaws.com/MaisonTest5.jpeg?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECcaCWV1LXdlc3QtMiJIMEYCIQDzKWVKqG6SVinagnmJaQL3wtK8qpH4Dv%2Fklyy1jMrpTwIhAPsxxcVSuT9TRHT47rwxOjsAJwlwx2zip3YoEuXDheIjKoECCKD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMzI4NDAyNDY1NDMzIgxW6l0W30hAMeZEy1Qq1QHa4GDLZiixqUchKPZbdZhXpRQbHB0UrQD7NlPh16YpB3mXhjR0xPvm4FYA%2FZJRZUPARqhm7i4Y8MeeWeWuRUswHsgnL5F2A9NkfUjMhLUPskRurLyEZzuaF0JrfgbIbtu6ZytIgjviBS94qg0gGy8dhJfaYaUTevLBTVKncQvMlmGCniT5g5D3M3rouodt57ygIE712JrjyRXRFREpIkdyMki9Ia0f6zGgRpl14%2BWVoOfIPPJRLqVarLeDoOMZCM00kh3zQDDtweuAwPx6OvYpZJLFP9ww6Lic9wU69QL%2FkmxhM1MG2Za1pLPeSLd3ClcwJ1%2BTR9WcQInU%2FInSag4Qh7VsJrdwlQhZxt05V3vRI7rpab4DSheelbZv839TExixdK8%2FuyEfw2mJoQeVyCY2RA627bpfwp7n1wZHVteSwuDVaSvJHAExueMfxe1MlCIBQiteUVEvMMayWxZ%2FbbUbsoXqxGYBu%2BimsK6JL9ITKKeWmgROkgTS9a5AGjbLpGNqLIxENTQkteijfmGProrZ5HIEx0zI7VHmPuW68K%2F%2B1f%2FpD7zzV95sLw5YwgMlL9W0sPvuTJtH1iOBwudWsC5%2FRJl1AMh4bv7l%2BTXpgHpQyJ4pxCpKynkTVGwKsnmgYOK1pC13wC1mpIzohkk%2FrbgV7YesrQAOuZwlFStDt7I0lK1dnFxLld7bC7LO0soqyiyNNUzjEMSvWVeX%2BtYoBpVqL%2FYR1uBY2alZC%2FhU5rkmMxYRgT5sDAch00aFacAheTTR5WekJwAavGzfFFpTmVEUGjqj&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200615T133109Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUY5SP6KM357TFAUE%2F20200615%2Feu-west-3%2Fs3%2Faws4_request&X-Amz-Signature=ba5d3e20cad58c45eddb8dd3729e99612145d4fd662a22f0fe4cda8e5cfce88f" alt=""></a>
+        <a href="#">
+          <%if house.apicture.attached?%>
+            <%= image_tag house.apicture, alt: 'picture' %>
+          <%else%>
+            <p>=== Il n'y a pas encore d'image lié à cet utilisateur ===</p>
+          <%end%>
+        </a>
         <div class="card-body">
           <p class="card-text text-justify"><%= house.description %></p>
           <p class="card-text"><%= house.price_visit %>€/visite</p>

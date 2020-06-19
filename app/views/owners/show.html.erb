@@ -11,7 +11,8 @@
   <p><%= @owner.description %></p>
   <% if owner_signed_in? %>
     <% if @owner.id == current_owner.id %>
-      <%= link_to 'Params connect', edit_owner_registration_path(@owner), class:"btn btn-success" %>
+      <%= link_to 'Nouveau', new_house_path, class:"btn btn-primary" %>
+      <%= link_to 'Params connect', edit_owner_registration_path(@owner), class:"btn btn-secondary" %>
       <%= link_to 'Edit', edit_owner_path(@owner), class:"btn btn-success" %>
       <%= link_to 'Destroy', @owner, method: :delete, data: { confirm: 'Est-ce que tu es sûr ?' }, class:"btn btn-danger" %>
     <% end %>

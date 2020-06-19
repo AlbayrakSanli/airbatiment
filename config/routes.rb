@@ -2,7 +2,18 @@ Rails.application.routes.draw do
 
   devise_for :owners, path: 'owners'
   devise_for :users, path: 'users'
+
   resources :houses
+  resources :houses, only: [:show] do
+    resources :apictures, only: [:create]
+    resources :bpictures, only: [:create]
+    resources :cpictures, only: [:create]
+    resources :dpictures, only: [:create]
+    resources :epictures, only: [:create]
+    resources :fpictures, only: [:create]
+    resources :gpictures, only: [:create]
+  end
+
   root 'pages#index'
   resources :teams, only: :index
 
