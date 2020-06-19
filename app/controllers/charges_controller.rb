@@ -1,12 +1,14 @@
 class ChargesController < ApplicationController
   def new
-    @house = House.find(params[:id])
+    @house = House.find(params[:house_id])
+    @availability = Availability.find(params[:id])
+
   end
 
   def create
-    @house = House.find(params[:id])
+    @house = House.find(params[:house_id])
     # Amount in cents
-    @amount = @house.price_visit
+    @amount = @house.price_visit * 100
 
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
@@ -19,6 +21,18 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'eur',
     })
+
+    @availability = Availability.find(params[:id])
+    @appointment = Appointment.new(user_id: params[:user_id], house_id: params[:house_id])
+
+    if @appointment.save
+      @availability.update(appointment_id: @appointment.id)
+      flash[:success] = "Appointment registration successfully saved"
+      redirect_to user_path(current_user)
+    else
+      flash[:failure] = "Appointment registration saving failed"
+      redirect_to root_path
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

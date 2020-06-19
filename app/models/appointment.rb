@@ -1,5 +1,6 @@
 class Appointment < ApplicationRecord
   after_create :meeting_notification_owner, :meeting_notification_user
+  after_destroy :cancellation
 
   belongs_to :user
   belongs_to :house
@@ -20,6 +21,10 @@ class Appointment < ApplicationRecord
 
   def meeting_notification_user
     UserMailer.meeting_notification_user(self).deliver_later(wait: 2.second)
+  end
+
+  def cancellation
+    OwnerMailer.cancellation(self).deliver_now
   end
 
 end
