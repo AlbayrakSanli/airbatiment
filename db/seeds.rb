@@ -4,6 +4,8 @@ User.destroy_all
 Owner.destroy_all
 House.destroy_all
 City.destroy_all
+Appointment.destroy_all
+Availability.destroy_all
 
 10.times do
   User.create(
@@ -36,4 +38,12 @@ City.destroy_all
     owner: Owner.all.sample,
     city: Faker::Address.city
   )
+end
+
+House.all.each do |house|
+  Availability.create(house_id: house.id, duration: 60, date_start: "2020-06-22 10:00:00")
+  Availability.create(house_id: house.id, duration: 60, date_start: "2020-06-22 12:00:00")
+  Availability.create(house_id: house.id, duration: 60, date_start: "2020-06-22 14:00:00")
+  Availability.create(house_id: house.id, duration: 60, date_start: "2020-06-23 10:00:00")
+  Availability.create(house_id: house.id, duration: 60, date_start: "2020-06-24 10:00:00")
 end
