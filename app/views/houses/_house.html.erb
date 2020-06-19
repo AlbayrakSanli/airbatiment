@@ -3,13 +3,11 @@
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
         <h4 class="card-header"><%= house.title %></h4>
-        <a href="#">
+        <div class="">
           <%if house.apicture.attached?%>
             <%= image_tag house.apicture, alt: 'picture' %>
-          <%else%>
-            <p>=== Il n'y a pas encore d'image lié à cet utilisateur ===</p>
           <%end%>
-        </a>
+        </div>
         <div class="card-body">
           <p class="card-text text-justify"><%= house.description %></p>
           <p class="card-text"><%= house.price_visit %>€/visite</p>
